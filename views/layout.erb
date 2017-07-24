@@ -1,2 +1,29 @@
 <%=yield%>
 <a href="/logout">Logout</a>
+<title>Billy</title>
+   <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="https://cdn4.iconfinder.com/data/icons/pretty_office_3/256/Sales-by-Payment-Method-rep.png">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+  </head>
+  <body>
+  <nav class="#26a69a teal lighten-1">
+      <div class="nav-wrapper">
+        <a href="/" class="brand-logo center">Billy</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="side-nav" id="mobile-demo">
+          <li><a href="/">Home</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+      <%= yield %>
+
+  </body>
+</html>
