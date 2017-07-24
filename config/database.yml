@@ -1,0 +1,6 @@
+development:
+  adapter: postgresql
+  database: billy
+test:
+  adapter: postgresql
+  database:  billy_test
