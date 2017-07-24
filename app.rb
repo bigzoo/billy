@@ -94,3 +94,13 @@ get '/logout' do
   session.clear
   redirect('/')
 end
+
+post('/payment_methods')do
+  user = params.fetch('user_id')
+  name = params.fetch('method_name')
+  acc_no = params.fetch('method_acc_no')
+  provider = params.fetch('method_provider')
+  new_payment_method = PaymentMethod.new(user_id:user,name:name,acc_no:acc_no,provider:provider)
+  new_payment_method.save
+  redirect('/user/home')
+end
