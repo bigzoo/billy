@@ -63,6 +63,7 @@ get('/user/login') do
   else
   erb(:user_login)
 end
+end
 
 get('/company/login') do
   if session[:id] && session[:type] == 'company'
