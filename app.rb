@@ -28,6 +28,7 @@ end
 post('/company/signup') do
   @user = Company.new(name: params['name'], email: params['email'], password: params['password'])
   @user.save
+  session[:type] = 'company'
   session[:id] = @user.id
   redirect '/company/home'
 end
@@ -36,6 +37,8 @@ get('/user/home') do
   if session[:id]
     @user = User.find(session[:id])
     erb(:user_home)
+  elsif session[:id] && session[:type] == 'company'
+    redirect('/company/home')
   else
     redirect('/user/login')
   end
@@ -45,28 +48,46 @@ get('/company/home') do
   if session[:id]
     @company = Company.find(session[:id])
     erb(:company_home)
+  elsif session[:id] && session[:type] == 'user'
+    redirect('/user/home')
   else
     redirect('/company/login')
   end
 end
 
 get('/user/login') do
-  erb(:user_login)
+  if session[:id] && session[:type] == 'user'
+    @user = User.find(session[:id])
+    redirect('/user/home')
+  elsif session[:id] && session[:type] == 'company'
+    redirect('/company/home')
+  else
+    erb(:user_login)
+end
 end
 
 get('/company/login') do
-  erb(:company_login)
+  if session[:id] && session[:type] == 'company'
+    @company = Company.find(session[:id])
+    redirect('/company/home')
+  elsif session[:id] && session[:type] == 'user'
+    redirect('/user/home')
+  else
+    erb(:company_login)
+  end
 end
 
 post('/user') do
   @user = User.find_by(email: params['email'], password: params['password'])
   session[:id] = @user.id
+  session[:type] = 'user'
   redirect('/company/home')
 end
 
 post('/company') do
   @company = Company.find_by(email: params['email'], password: params['password'])
   session[:id] = @company.id
+  session[:type] = 'company'
   redirect('/user/home')
 end
 
@@ -84,3 +105,15 @@ get('/companies/:id') do
   erb(:company_home)
 end
 # end of comopany home
+
+
+#payment methods
+post('/payment_methods') do
+  user = params.fetch('user_id')
+  name = params.fetch('method_name')
+  acc_no = params.fetch('method_acc_no')
+  provider = params.fetch('method_provider')
+  new_payment_method = PaymentMethod.new(user_id: user, name: name, acc_no: acc_no, provider: provider)
+  new_payment_method.save
+  redirect('/user/home')
+end

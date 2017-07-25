@@ -1,21 +1,101 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Billy</title>
-    <link rel="icon" type="image/png" href="https://cdn.iconscout.com/public/images/icon/premium/png-512/shop-shopping-bill-offer-buy-store-payment-300b7519340243b6-512x512.png">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Shoepify!</title>
+    <meta charset="utf-8">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
-    <link rel="stylesheet" href="/css/styles.css" type="text/css">
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <link rel="shortcut icon" href="/images/favicon.ico">
   </head>
   <body>
+    <!--Navigation-->
+    <div class="navbar-fixed">
+      <nav id="nav_f" class="default_color" role="navigation">
+        <div class="container">
+          <div class="nav-wrapper">
+            <a href="/" id="logo-container" class="brand-logo">Shoepify!</a>
+            <ul class="right hide-on-med-and-down">
+              <% if session[:id] %>
+              <li>
+                Welcome
+                <%=@user.first_name%>
+              </li>
+              <li>
+                <a href="/logout">Logout</a>
+              </li>
+            <% else %>
+              <li>
+                <a href="/login">Login</a>
+              </li>
+              <% end %>
+
+            </ul>
+            <ul class="right hide-on-med-and-down">
+              <% if session[:id] %>
+              <li>
+                Welcome
+                <%=@user.first_name%>
+              </li>
+              <li>
+                <a href="/logout">Logout</a>
+              </li>
+            <% else %>
+              <li>
+                <a href="/login">Login</a>
+              </li>
+              <% end %>
+
+            </ul>
+            <a href="#" data-activates="nav-mobile" class="button-collapse">
+              <i class="mdi-navigation-menu"></i>
+            </a>
+          </div>
+        </div>
+      </nav>
+    </div>
+
     <%= yield %>
-    <br>
-    <a href="/logout">Logout</a>
-    <br>
-    <a href="/">Home</a>
-  </body>
+
+    <!--Footer-->
+    <footer id="contact" class="page-footer default_color scrollspy">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Billy</h5>
+          </div>
+          <div class="col l3 s12">
+            <h5 class="white-text">Social</h5>
+            <ul>
+              <a target="_blank" class="white-text" href="https://github.com/bigzoo/billy">
+                <i class="small fa fa-github-square white-text"></i>
+                Github
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright default_color">
+      <div class="container">
+        Made by
+        <a target="_blank" class="white-text" href="https://github.com/bigzoo/billy/graphs/contributors">The Billy Team</a>. Thanks to
+        <a target="_blank" class="white-text" href="http://materializecss.com/">materializecss</a>
+      </div>
+    </div>
+  </footer>
+
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+  <script src="/js/scripts.js"></script>
+</body>
 </html>
