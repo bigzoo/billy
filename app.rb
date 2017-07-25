@@ -5,7 +5,11 @@ also_reload('lib/**/*.rb')
 enable :sessions
 # Route to the index
 get('/') do
-  @user = User.find(session[:id])
+  if session[:id] && session[:type] == 'user'
+    @user = User.find(session[:id])
+  elsif session[:id] && session[:type] == 'company'
+    @company = Company.find(session[:id])
+  end
   erb(:index)
 end
 
