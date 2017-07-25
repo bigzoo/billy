@@ -110,7 +110,7 @@ get('/companies/:id') do
 end
 
 post('/company_accounts')do
-  national_id = params.fetch("national_id")
+  # national_id = params.fetch("national_id")
   company_id = params.fetch('company_id').to_i
   national_id = params.fetch("user_national_id")
   name = params.fetch("user_reg_name")
