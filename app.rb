@@ -109,14 +109,14 @@ get('/companies/:id') do
   erb(:company_home)
 end
 
-post('/company_accounts')do
+post('/company_accounts') do
   company_id = params.fetch('company_id').to_i
-  national_id = params.fetch("user_national_id")
-  name = params.fetch("user_reg_name")
-  account_no = params.fetch("account_no")
-  balance = params.fetch("balance")
-  due_date = params.fetch("due_date")
-  CompanyAccount.create(company_id: company_id,user_national_id: national_id, user_reg_name: name, account_no: account_no, balance: balance, due_date: due_date)
+  national_id = params.fetch('user_national_id')
+  name = params.fetch('user_reg_name')
+  account_no = params.fetch('account_no')
+  balance = params.fetch('balance')
+  due_date = params.fetch('due_date')
+  CompanyAccount.create(company_id: company_id, user_national_id: national_id, user_reg_name: name, account_no: account_no, balance: balance, due_date: due_date)
   redirect('/company/home')
 end
 # end of comopany home
@@ -132,7 +132,7 @@ post('/payment_methods') do
   redirect('/user/home')
 end
 
-get('/user/profile')do
+get('/user/profile') do
   @user = User.find(session[:id])
   erb(:user_profile)
 end

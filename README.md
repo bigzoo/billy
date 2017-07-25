@@ -1,4 +1,5 @@
 # _Billy_
+[![Build Status](https://travis-ci.org/bigzoo/billy.svg?branch=master)](https://travis-ci.org/bigzoo/billy)
 
 ##### This application  that  pays your bills on behalf.All you need to do is to top-up.
 
