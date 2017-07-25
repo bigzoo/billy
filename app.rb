@@ -167,3 +167,20 @@ get('/user/profile') do
   @user = User.find(session[:id])
   erb(:user_profile)
 end
+
+post('/user_accounts')do
+  user = User.find(session[:id])
+  account_no = params.fetch('account_no').to_i
+  company = Company.find(params.fetch('company_id').to_i)
+  company_account = CompanyAccount.find_by(account_no:account_no, company_id: company.id)
+  if company_account
+    user_account = UserAccount.new(user_id:user.id,company_account_id:company_account.id,account_no:account_no,name:company_account.company.name.concat(' Account For '+ company_account.user_reg_name))
+    user_account.save
+    redirect('/user/home')
+  else
+    @error = "No account with no "+account_no.to_s+" was found associated with the company you selected."
+    @user = User.find(session[:id])
+    @companies = Company.all
+    erb(:user_home)
+  end
+end
