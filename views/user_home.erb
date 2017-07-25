@@ -1,26 +1,31 @@
+<% if !@user.national_id||!@user.image||!@user.phone_no||!@user.username %>
+<div class="red">
+  <div class="center nav-wrapper">
+    <a href="/user/profile" class="white-text">Please Click Here To Complete Registration</a>
+  </div>
+</div><% end %>
 <div class="container">
-<%if @user.payment_methods.any?%>
-<h1>Your payment methods</h1>
-<div class="collection">
-<% @user.payment_methods.each() do |method| %>
-  <a href="#!" class="collection-item"><%= method.name.capitalize %></a>
-  <% end %>
-</div>
+  <%if @user.payment_methods.any?%>
+  <h1>Your payment methods</h1>
+  <div class="collection">
+    <% @user.payment_methods.each() do |method| %>
+    <a href="#!" class="collection-item"><%= method.name.capitalize %></a>
+    <% end %>
+  </div>
 <% else %>
-<h1>No payment methods added.</h1>
-<% end %>
+  <h1>No payment methods added.</h1>
+  <% end %>
 
+  <h1>You can add payment methods to your account</h1>
 
-<h1>You can add payment methods to your account</h1>
-
-<form action="/payment_methods" method="post">
-  <input type="hidden" id="user_id" name="user_id" value="<%=@user.id%>">
-  <label for="method_name">Payment Method Name</label>
-  <input placeholder="eg. Mpesa, Bank" type="text" name="method_name">
-  <label for="method_acc_no">Account No</label>
-  <input placeholder="eg phone no or bank acc no" type="text" name="method_acc_no">
-  <label for="method_provider" >Payment Provider</label>
-  <input placeholder="Eg Safaricom, Equity Bank" type="text" name="method_provider">
-  <button type="submit" name="submit">Add Payment Method</button>
-</form>
+  <form action="/payment_methods" method="post">
+    <input type="hidden" id="user_id" name="user_id" value="<%=@user.id%>">
+    <label for="method_name">Payment Method Name</label>
+    <input placeholder="eg. Mpesa, Bank" type="text" name="method_name">
+    <label for="method_acc_no">Account No</label>
+    <input placeholder="eg phone no or bank acc no" type="text" name="method_acc_no">
+    <label for="method_provider">Payment Provider</label>
+    <input placeholder="Eg Safaricom, Equity Bank" type="text" name="method_provider">
+    <button type="submit" name="submit">Add Payment Method</button>
+  </form>
 </div>
