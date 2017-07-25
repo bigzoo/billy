@@ -4,7 +4,8 @@
 </div>
 
 <div class="row">
-  <form class="company_accounts" action="/company_accounts" method="post">
+  <button id="show_company-accounts" name="button">Add User</button>
+  <form class="company_accounts" action="/company_home" method="post">
     <input class="form-control" type="hidden" name="company_id" value="<% @company_id %>">
     <label for="user_national_id">User national ID:</label>
     <input class="form-control" type="number" name="national_id" value="user_national_id">
