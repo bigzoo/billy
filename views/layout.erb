@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
 <title>Billy</title>
    <meta charset="utf-8">
     <link rel="icon" type="image/png" href="https://cdn4.iconfinder.com/data/icons/pretty_office_3/256/Sales-by-Payment-Method-rep.png">
@@ -9,23 +9,94 @@
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <link rel="shortcut icon" href="/images/favicon.ico">
   </head>
   <body>
-  <nav class="#26a69a teal lighten-1">
-      <div class="nav-wrapper">
-        <a href="/" class="brand-logo center">Billy</a>
-        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-        <ul class="side-nav" id="mobile-demo">
-          <li><a href="/">Home</a></li>
-        </ul>
-    </nav>
+    <!--Navigation-->
+    <div class="navbar-fixed">
+      <nav id="nav_f" class="default_color" role="navigation">
+        <div class="container">
+          <div class="nav-wrapper">
+            <a href="/" id="logo-container" class="brand-logo">Billy!</a>
+            <ul class="right hide-on-med-and-down">
+              <% if session[:id] %>
+              <li>
+                Welcome
+                <%=@user.first_name%>
+              </li>
+              <li>
+                <a href="/logout">Logout</a>
+              </li>
+            <% else %>
+              <li>
+                <a href="/login">Login</a>
+              </li>
+              <% end %>
 
-    <div class="container">
-      <%= yield %>
+            </ul>
+            <ul class="right hide-on-med-and-down">
+              <% if session[:id] %>
+              <li>
+                Welcome
+                <%=@user.first_name%>
+              </li>
+              <li>
+                <a href="/logout">Logout</a>
+              </li>
+            <% else %>
+              <li>
+                <a href="/login">Login</a>
+              </li>
+              <% end %>
 
-  </body>
+            </ul>
+            <a href="#" data-activates="nav-mobile" class="button-collapse">
+              <i class="mdi-navigation-menu"></i>
+            </a>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <%= yield %>
+
+    <!--Footer-->
+    <footer id="contact" class="page-footer default_color scrollspy">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Billy</h5>
+          </div>
+          <div class="col l3 s12">
+            <h5 class="white-text">Social</h5>
+            <ul>
+              <a target="_blank" class="white-text" href="https://github.com/bigzoo/billy">
+                <i class="small fa fa-github-square white-text"></i>
+                Github
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright default_color">
+      <div class="container">
+        Made by
+        <a target="_blank" class="white-text" href="https://github.com/bigzoo/billy/graphs/contributors">The Billy Team</a>. Thanks to
+        <a target="_blank" class="white-text" href="http://materializecss.com/">materializecss</a>
+      </div>
+    </div>
+  </footer>
+
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+  <script src="/js/scripts.js"></script>
+</body>
 </html>
-
