@@ -1,4 +1,4 @@
-require('bundler/setup')
+facerequire('bundler/setup')
 Bundler.require(:default)
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 also_reload('lib/**/*.rb')
@@ -13,6 +13,8 @@ get('/') do
   erb(:index)
 end
 
+# start of sign up and login methods
+
 get '/user/signup' do
   erb :user_signup
 end
@@ -24,7 +26,6 @@ end
 post('/user/signup') do
   @user = User.new(first_name: params['first_name'], last_name: params['last_name'], email: params['email'], password: params['password'])
   @user.save
-  session[:type] = 'user'
   session[:id] = @user.id
   redirect '/user/home'
 end
@@ -38,7 +39,7 @@ post('/company/signup') do
 end
 
 get('/user/home') do
-  if session[:id] && session[:type] == 'user'
+  if session[:id]
     @user = User.find(session[:id])
     erb(:user_home)
   elsif session[:id] && session[:type] == 'company'
@@ -49,7 +50,7 @@ get('/user/home') do
 end
 
 get('/company/home') do
-  if session[:id] && session[:type] == 'company'
+  if session[:id]
     @company = Company.find(session[:id])
     erb(:company_home)
   elsif session[:id] && session[:type] == 'user'
@@ -99,12 +100,23 @@ get '/logout' do
   redirect('/')
 end
 
-post('/payment_methods')do
+# end of sign in and login methods
+
+# company_home
+get('/companies/:id') do
+  @company = Company.find(params.fetch('id').to_i)
+  @user_accounts = User_account.all
+  erb(:company_home)
+end
+# end of comopany home
+
+# payment methods
+post('/payment_methods') do
   user = params.fetch('user_id')
   name = params.fetch('method_name')
   acc_no = params.fetch('method_acc_no')
   provider = params.fetch('method_provider')
-  new_payment_method = PaymentMethod.new(user_id:user,name:name,acc_no:acc_no,provider:provider)
+  new_payment_method = PaymentMethod.new(user_id: user, name: name, acc_no: acc_no, provider: provider)
   new_payment_method.save
   redirect('/user/home')
 end
