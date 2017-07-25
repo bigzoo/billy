@@ -3,20 +3,54 @@
   <p><%=@company.name%></p>
 </div>
 
-<div class="row">
+<div class="container">
+  <button id="show_company_accounts" name="button">Add User</button>
+  <form class="company_accounts" action="/company_accounts" method="post">
+    <input class="form-control" type="hidden" name="company_id" value="<%= @company.id %>">
+    <div class="input-field">
+      <input class="validate" type="number" name="user_national_id">
+      <label for="user_national_id">User national ID:</label>
+    </div>
+    <div class="input-field">
+      <input class="validate" type="text" name="user_reg_name">
+      <label for="user_reg_name">User registration name:</label>
+    </div>
+    <div class="input-field">
+      <input class="validate" type="number" name="account_no">
+      <label for="account_no">Account number:</label>
+    </div>
+    <div class="input-field">
+      <input class="validate" type="number" name="balance">
+      <label for="balance">Balance:</label>
+    </div>
+    <div class="input-field">
+      <input class="datepicker" type="text" name="due_date">
+      <label for="due_date">Due Date:</label>
+    </div>
+    <button type="submit" name="button">Save</button>
+  </form>
+</div>
+
+<div class="container">
   <% if @company.company_accounts.any? %>
   <p><span class="accounts_no" <%= @company.company_accounts.count %></span>
   currently registered users.</p>
-<h1>
-  <%= @company.name %>
-</h1>
+<ul class="center collection with-header">
+  <li class="collection-header">
+    <%= @company.name.capitalize %>
+  </li>
+</ul>
 
-<ul>
+<ul class="center collection with-header">
   <% @company.company_accounts.each() do |company_account| %>
-  <li>
-    <h2><%= @company_account.name%></h2>
-    <h2><%= @company_account.account_no %></h2>
-    <h2><%= @company_account.balance %></h2>
+  <li class="collection-item">
+    <div class="">
+      Name:
+      <%= company_account.user_reg_name%>
+      Account No:<%= company_account.account_no %>
+      Account Balance:
+      <%= company_account.balance %>
+    </div>
   </li>
   <%end%>
 </ul>
