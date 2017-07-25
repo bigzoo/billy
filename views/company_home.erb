@@ -35,16 +35,22 @@
   <% if @company.company_accounts.any? %>
   <p><span class="accounts_no" <%= @company.company_accounts.count %></span>
   currently registered users.</p>
-<h1>
-  <%= @company.name %>
-</h1>
+<ul class="center collection with-header">
+  <li class="collection-header">
+    <%= @company.name.capitalize %>
+  </li>
+</ul>
 
-<ul>
+<ul class="center collection with-header">
   <% @company.company_accounts.each() do |company_account| %>
-  <li>
-    <h2><%= company_account.user_reg_name%></h2>
-    <h2><%= company_account.account_no %></h2>
-    <h2><%= company_account.balance %></h2>
+  <li class="collection-item">
+    <div class="">
+      Name:
+      <%= company_account.user_reg_name%>
+      Account No:<%= company_account.account_no %>
+      Account Balance:
+      <%= company_account.balance %>
+    </div>
   </li>
   <%end%>
 </ul>
