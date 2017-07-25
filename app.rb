@@ -5,6 +5,7 @@ also_reload('lib/**/*.rb')
 enable :sessions
 # Route to the index
 get('/') do
+  @user = User.find(session[:id])
   erb(:index)
 end
 
@@ -25,10 +26,10 @@ post('/user/signup') do
 end
 
 post('/company/signup') do
-  @user = Company.new(name: params['name'], email: params['email'], password: params['password'])
-  @user.save
+  @company = Company.new(name: params['name'], email: params['email'], password: params['password'])
+  @company.save
   session[:type] = 'company'
-  session[:id] = @user.id
+  session[:id] = @company.id
   redirect '/company/home'
 end
 
@@ -61,13 +62,12 @@ get('/user/login') do
   elsif session[:id] && session[:type] == 'company'
     redirect('/company/home')
   else
-  erb(:user_login)
-end
+    erb(:user_login)
+  end
 end
 
 get('/company/login') do
   if session[:id] && session[:type] == 'company'
-    @company = Company.find(session[:id])
     redirect('/company/home')
   elsif session[:id] && session[:type] == 'user'
     redirect('/user/home')
@@ -80,14 +80,14 @@ post('/user') do
   @user = User.find_by(email: params['email'], password: params['password'])
   session[:id] = @user.id
   session[:type] = 'user'
-  redirect('/company/home')
+  redirect('/user/home')
 end
 
 post('/company') do
   @company = Company.find_by(email: params['email'], password: params['password'])
   session[:id] = @company.id
   session[:type] = 'company'
-  redirect('/user/home')
+  redirect('/company/home')
 end
 
 get '/logout' do
