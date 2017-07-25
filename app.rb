@@ -104,6 +104,16 @@ get('/companies/:id') do
   @user_accounts = User_account.all
   erb(:company_home)
 end
+
+post('/company_accounts')do
+  national_id = params.fetch("national_id")
+  name = params.fetch("user_reg_name")
+  account_no = params.fetch("account_no")
+  balance = params.fetch("balance")
+  due_date = params.fetch("due_date")
+  CompanyAccount.create(national_id: national_id, name: user_reg_name, account_no: account_no, balance: balance, due_date: due_date)
+  erb(:company_home)
+end
 # end of comopany home
 
 # payment methods
