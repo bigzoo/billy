@@ -25,8 +25,13 @@
             <ul class="right hide-on-med-and-down">
               <% if session[:id] %>
               <li>
-                Welcome
+              <% if session[:type]=='user'%>
+              Welcome
                 <%=@user.first_name%>
+                <%elsif session[:type]=='company'%>
+                Welcome
+                <%=@company.name%>
+              <% end %>
               </li>
               <li>
                 <a href="/logout">Logout</a>
@@ -41,8 +46,13 @@
             <ul class="right hide-on-med-and-down">
               <% if session[:id] %>
               <li>
-                Welcome
+               <% if session[:type]=='user'%>
+              Welcome
                 <%=@user.first_name%>
+                <%elsif session[:type]=='company'%>
+                Welcome
+                <%=@company.name%>
+              <% end %>
               </li>
               <li>
                 <a href="/logout">Logout</a>
@@ -54,9 +64,9 @@
               <% end %>
 
             </ul>
-            <a href="#" data-activates="nav-mobile" class="button-collapse">
+         <!--    <a href="#" data-activates="nav-mobile" class="button-collapse">
               <i class="mdi-navigation-menu"></i>
-            </a>
+            </a> -->
           </div>
         </div>
       </nav>
