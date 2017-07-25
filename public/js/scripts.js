@@ -39,6 +39,6 @@ $('.datepicker').pickadate({
 
 $(document).ready(function(){
   $("#show_company_accounts").click(function(){
-    $(".company_accounts").toggle();
+    $(".company_accounts").slideDown();
   });
 });
