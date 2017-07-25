@@ -111,12 +111,14 @@ end
 
 post('/company_accounts')do
   national_id = params.fetch("national_id")
+  company_id = params.fetch('company_id').to_i
+  national_id = params.fetch("user_national_id")
   name = params.fetch("user_reg_name")
   account_no = params.fetch("account_no")
   balance = params.fetch("balance")
   due_date = params.fetch("due_date")
-  CompanyAccount.create(national_id: national_id, name: user_reg_name, account_no: account_no, balance: balance, due_date: due_date)
-  erb(:company_home)
+  CompanyAccount.create(company_id: company_id,user_national_id: national_id, user_reg_name: name, account_no: account_no, balance: balance, due_date: due_date)
+  redirect('/company/home')
 end
 # end of comopany home
 
