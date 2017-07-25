@@ -88,6 +88,36 @@ post('/user') do
   redirect('/user/home')
 end
 
+post('/user_account')do
+  user = User.find(session[:id])
+  national_id = params.fetch('national_id')
+  if national_id==''
+    national_id=user.national_id
+  end
+  first_name = params.fetch('first_name')
+  if first_name==''
+    first_name=user.first_name
+  end
+  last_name = params.fetch('last_name')
+  if last_name==''
+    last_name=user.last_name
+  end
+  username = params.fetch('username')
+  if username==''
+    username=user.username
+  end
+  phone_no = params.fetch('phone_no')
+  if phone_no==''
+    phone_no=user.phone_no
+  end
+  image = params.fetch('image')
+  if image==''
+    image=user.image
+  end
+  user.update(national_id:national_id,first_name:first_name,last_name:last_name,username:username,phone_no:phone_no,image:image)
+  redirect('/user/home')
+end
+
 post('/company') do
   @company = Company.find_by(email: params['email'], password: params['password'])
   session[:id] = @company.id
