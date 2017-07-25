@@ -22,3 +22,7 @@ body {
 main {
   flex: 1 0 auto;
 }
+
+.company_accounts{
+  display: none;
+}
