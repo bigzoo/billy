@@ -1,1 +1,24 @@
-Welcome, <%=@company.name%>!
+<div class="company-landing">
+  <img src="http://kplc.co.ke/img/logo.png"><br>
+  <%=@company.name%>
+</div>
+
+<div class="row">
+  <% if @company.company_accounts.any? %>
+  <h1>Users Registered to
+    <%= @company.name %></h1>
+  <ul>
+    <% @company.company_accounts.each() do |company_account| %>
+    <li>
+      <h2><%= @company_account.name%></h2>
+      <h2><%= @company_account.account_no %></h2>
+      <h2><%= @company_account.balance %></h2>
+    </li>
+    <%end%>
+  </ul>
+  <%else%>
+  <h1>No users registered to
+    <%= @company.name%>
+    yet.</h1>
+  <%end%>
+</div>
