@@ -1,6 +1,23 @@
 <div class="company-landing">
-  <img src="<%= company.image %>"><br>
+  <img src="<%= @company.image %>"><br>
   <p><%=@company.name%></p>
+</div>
+
+<div class="row">
+  <form class="company_accounts" action="/company_accounts" method="post">
+    <input class="form-control" type="hidden" name="company_id" value="<% @company_id %>">
+    <label for="user_national_id">User national ID:</label>
+    <input class="form-control" type="number" name="national_id" value="user_national_id">
+    <label for="user_reg_name">User registration name:</label>
+    <input class="form-control" type="text" name="user_reg_name" value="user_reg_name">
+    <label for="account_no">Account number:</label>
+    <input class="form-control" type="number" name="account_no" value="account_no">
+    <label for="balance">Balance:</label>
+    <input class="form-control" type="number" name="balance" value="balance">
+    <label for="due_date">Due Date:</label>
+    <input class="form-control" type="date" name="due_date" value="due_date">
+    <button type="submit" name="button">Save</button>
+  </form>
 </div>
 
 <div class="row">
