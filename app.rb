@@ -132,3 +132,8 @@ post('/payment_methods') do
   new_payment_method.save
   redirect('/user/home')
 end
+
+get('/user/profile')do
+  @user = User.find(session[:id])
+  erb(:user_profile)
+end
