@@ -39,6 +39,7 @@ post('/company/signup') do
 end
 
 get('/user/home') do
+  @companies = Company.all
   if session[:id]
     @user = User.find(session[:id])
     erb(:user_home)
