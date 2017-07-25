@@ -35,3 +35,10 @@ $('.datepicker').pickadate({
   $(document).ready(function() {
       $('select').material_select();
     });
+
+
+$(document).ready(function(){
+  $("#show_company_accounts").click(function(){
+    $(".company_accounts").toggle();
+  });
+});
