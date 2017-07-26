@@ -1,14 +1,14 @@
 <div class="container">
   <div class="collection with-header">
     <div class="collection-header center">
-      <h3> <%=@company.name%>'s Profile</h3>
+      <h3> <%=@company.name.capitalize%>'s profile</h3>
     </div>
   </div>
   <form action="/company_account" method="post">
     <input type="hidden" name="_method" value="patch">
     <div class="input-field">
       <input class="validate" type="text" name="name" value="<%=@company.name%>">
-      <label for="name">Cmpany Name:</label>
+      <label for="name">Company Name:</label>
     </div>
     <div class="input-field">
       <input class="validate" type="email" name="email" value="<%=@company.email%>" readonly>
@@ -18,7 +18,7 @@
       <input class="validate" type="text" name="image" value="<%=@company.image%>">
       <label for="image">New Image link:</label>
     </div>
-    <button type="submit" class="btn" name="button">Update<i class="material-icons right">send</i></button>
+    <button type="submit" class="btn blue" name="button">Update<i class="material-icons right">send</i></button>
   </form>
   <br><br><br>
 </div>
