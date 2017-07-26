@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Fredoka+One|PT+Sans|Raleway|Righteous');
+@import url('https://fonts.googleapis.com/css?family=Fredoka+One|Passion+One|PT+Sans|Raleway|Righteous');
 /*font-family: 'Raleway', sans-serif;
 font-family: 'PT Sans', sans-serif;
 font-family: 'Righteous', cursive;
@@ -27,7 +27,7 @@ body {
 }
 
 .name{
-  font-family: 'Righteous', cursive;
+  font-family: 'Passion One', cursive;
   font-weight: 500;
 }
 
