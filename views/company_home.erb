@@ -50,6 +50,9 @@
       Account No:<%= company_account.account_no %>
       Account Balance:
       <%= company_account.balance %>
+      <a href="/company_accounts/<%= company_account.id()%>/edit">
+        <button type="button" name="button">Update Details</button>
+      </a>
     </div>
   </li>
   <%end%>
