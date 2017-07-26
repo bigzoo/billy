@@ -153,17 +153,22 @@ end
 
 
 #update method
+get('/company_accounts/:id/edit')do
+  @company_account = CompanyAccount.find(params.fetch("id").to_i)
+  @company = Company.find(session[:id])
+  erb(:company_account_edit)
+end
+
 patch('/company_accounts/:id') do
-  company_id = params.fetch('company_id').to_i
   national_id = params.fetch('user_national_id')
   name = params.fetch('user_reg_name')
   account_no = params.fetch('account_no')
   balance = params.fetch('balance')
   due_date = params.fetch('due_date')
   @company_account = CompanyAccount.find(params.fetch('id').to_i)
-  @company_account.update(company_id: company_id, user_national_id: national_id, user_reg_name: name, account_no: account_no, balance: balance, due_date: due_date)
+  @company_account.update(user_national_id: national_id, user_reg_name: name, account_no: account_no, balance: balance, due_date: due_date)
   @company_accounts = CompanyAccount.all
-  erb(:company_home)
+  redirect '/company/home'
 end
 
 # end of company home
