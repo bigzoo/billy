@@ -199,3 +199,17 @@ post('/user_accounts')do
     erb(:user_home)
   end
 end
+
+post('/payments')do
+  user = User.find(session[:id])
+  payment_method = PaymentMethod.find(params.fetch('payment_method').to_i)
+  user_account = UserAccount.find(params.fetch('user_account').to_i)
+  amount = params.fetch('amount').to_i
+  company = Company.find(params.fetch('company').to_i)
+  new_payment = Payment.new(user_id:user.id,payment_method_id:payment_method.id,user_account_id:user_account.id,amount:amount,company_id:company.id)
+  new_payment.save
+  company_account = user_account.company_account
+  new_balance = company_account.balance+amount
+  company_account.update(balance:new_balance)
+  redirect('/user/home')
+end
