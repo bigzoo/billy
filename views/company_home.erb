@@ -33,7 +33,7 @@
 
 <div class="container">
   <% if @company.company_accounts.any? %>
-  <p><span class="accounts_no" <%= @company.company_accounts.count %></span>
+  <p><span class="accounts_no"><%= @company.company_accounts.count %></span>
   currently registered users.</p>
 <ul class="center collection with-header">
   <li class="collection-header">
