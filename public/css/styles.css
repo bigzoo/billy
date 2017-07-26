@@ -43,3 +43,24 @@ main {
   height: 200px;
   width:  250px;
 }
+
+.account_name{
+  color: #ff6600;
+  font-size: 20px;
+  font-weight: bold;
+}
+.account_number{
+  color: #2db300;
+  font-size: 20px;
+}
+.balance{
+  color: red;
+  font-size:  23px;
+}
+.accounts_no{
+  font-family: 'Righteous', cursive;
+  font-size:  16px;
+}
+.accounts{
+  height: auto;
+}

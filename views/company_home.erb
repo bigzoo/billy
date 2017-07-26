@@ -1,10 +1,10 @@
-<div class="company-landing">
+<div class="company-landing center">
   <img src="<%= @company.image %>"><br>
-  <p><%=@company.name%></p>
+  <h3><%=@company.name%></h3>
 </div>
 
-<div class="container">
-  <button id="show_company_accounts" name="button">Add User</button>
+<div class="container accounts">
+  <button id="show_company_accounts" class="btn blue" name="button">Add User</button>
   <form class="company_accounts" action="/company_accounts" method="post">
     <input class="form-control" type="hidden" name="company_id" value="<%= @company.id %>">
     <div class="input-field">
@@ -27,39 +27,37 @@
       <input class="datepicker" type="text" name="due_date">
       <label for="due_date">Due Date:</label>
     </div>
-    <button type="submit" name="button">Save</button>
+    <button class="btn blue" type="submit" name="button">Save</button>
   </form>
-</div>
 
-<div class="container">
   <% if @company.company_accounts.any? %>
-  <p><span class="accounts_no"><%= @company.company_accounts.count %></span>
-  currently registered users.</p>
-<ul class="center collection with-header">
-  <li class="collection-header">
-    <%= @company.name.capitalize %>
-  </li>
-</ul>
+  <p>
+    <span class="accounts_no"><%= @company.company_accounts.count %></span>
+    currently registered users.</p>
+  <ul class="center collection with-header">
+    <li class="collection-header">
+      <%= @company.name.capitalize %> clients
+    </li>
+  </ul>
 
-<ul class="center collection with-header">
-  <% @company.company_accounts.each() do |company_account| %>
-  <li class="collection-item">
-    <div class="">
-      Name:
-      <%= company_account.user_reg_name%>
-      Account No:<%= company_account.account_no %>
-      Account Balance:
-      <%= company_account.balance %>
-      <a href="/company_accounts/<%= company_account.id()%>/edit">
-        <button type="button" name="button">Update Details</button>
-      </a>
-    </div>
-  </li>
+  <ul class="center collection with-header">
+    <% @company.company_accounts.each() do |company_account| %>
+    <li class="collection-item">
+      <div class="">
+        Name:<span class="account_name"><%= company_account.user_reg_name%></span>
+        &nbsp; &nbsp; &nbsp; Account No:<span class="account_number"><%= company_account.account_no %></span>
+        &nbsp; &nbsp; &nbsp; Account Balance:<span class="balance"><%= company_account.balance %></span>
+        &nbsp; &nbsp; &nbsp;
+        <a href="/company_accounts/<%= company_account.id()%>/edit">
+          <button class="btn blue">Update Details</button>
+        </a>
+      </div>
+    </li>
+    <%end%>
+  </ul>
+  <%else%>
+  <h1>No users registered to
+    <%= @company.name%>
+    yet.</h1>
   <%end%>
-</ul>
-<%else%>
-<h1>No users registered to
-  <%= @company.name%>
-  yet.</h1>
-<%end%>
 </div>
