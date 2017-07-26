@@ -76,6 +76,11 @@ main {
 .btn{
   margin: 10px;
 }
+#contact{
+  text-align: center;
+  font-family: 'Fredoka One', cursive;
+  font-size:  18px;
+}
 
 footer{
   margin-bottom: 0px;
