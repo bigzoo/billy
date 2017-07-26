@@ -1,26 +1,28 @@
+<div class="container">
 <h3>Update <%= @company_account.user_reg_name%>'s  details </h3>
 
 <form action="/company_accounts/<%= @company_account.id()%>" method="post">
   <input type="hidden" name="_method" value="patch">
   <div class="input-field">
-    <input class="validate" type="number" value="<%= @company_account.user_national_id()%>" name="user_national_id" readonly>
+    <input class="validate" type="number" value="<%= @company_account.user_national_id()%>" name="user_national_id" disabled>
     <label for="user_national_id">User national ID:</label>
   </div>
   <div class="input-field">
-    <input class="validate" type="text" value="<%= @company_account.user_reg_name %>" readonly name="user_reg_name">
+    <input class="validate" type="text" value="<%= @company_account.user_reg_name %>" disabled name="user_reg_name">
     <label for="user_reg_name">User registration name:</label>
   </div>
   <div class="input-field">
-    <input class="validate" placeholder="<%= @company_account.account_no()%>"type="number" name="account_no">
+    <input class="validate" value="<%= @company_account.account_no()%>"type="number" name="account_no">
     <label for="account_no">Account number:</label>
   </div>
   <div class="input-field">
-    <input class="validate" placeholder="<%= @company_account.balance()%>"type="number" name="balance">
+    <input class="validate" value="<%= @company_account.balance()%>"type="number" name="balance">
     <label for="balance">Balance:</label>
   </div>
   <div class="input-field">
-    <input class="datepicker" placeholder="<%= @company_account.due_date()%>" type="text" name="due_date">
+    <input class="datepicker" value="<%= @company_account.due_date()%>" type="text" name="due_date">
     <label for="due_date">Due Date:</label>
   </div>
-  <button type="submit">Save Changes</button>
+  <button class="btn" type="submit">Save Changes</button>
 </form>
+</div>
