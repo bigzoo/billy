@@ -150,7 +150,23 @@ post('/company_accounts') do
   CompanyAccount.create(company_id: company_id, user_national_id: national_id, user_reg_name: name, account_no: account_no, balance: balance, due_date: due_date)
   redirect('/company/home')
 end
-# end of comopany home
+
+
+#update method
+patch('/company_accounts/:id') do
+  company_id = params.fetch('company_id').to_i
+  national_id = params.fetch('user_national_id')
+  name = params.fetch('user_reg_name')
+  account_no = params.fetch('account_no')
+  balance = params.fetch('balance')
+  due_date = params.fetch('due_date')
+  @company_account = CompanyAccount.find(params.fetch('id').to_i)
+  @company_account.update(company_id: company_id, user_national_id: national_id, user_reg_name: name, account_no: account_no, balance: balance, due_date: due_date)
+  @company_accounts = CompanyAccount.all
+  erb(:company_home)
+end
+
+# end of company home
 
 # payment methods
 post('/payment_methods') do
