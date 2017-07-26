@@ -28,6 +28,41 @@
     <input placeholder="eg phone no or bank acc no" type="text" name="method_acc_no">
     <label for="method_provider">Payment Provider</label>
     <input placeholder="Eg Safaricom, Equity Bank" type="text" name="method_provider">
-    <button type="submit" name="submit">Add Payment Method</button>
+    <button type="submit" class="btn" name="submit">Add Payment Method</button>
+  </form>
+</div>
+
+<div class="container">
+  <%if @user.user_accounts.any?%>
+  <h1>Your Linked Accounts</h1>
+  <div class="collection">
+    <% @user.user_accounts.each() do |user_account| %>
+    <a href="#!" class="collection-item"><%= user_account.name%></a>
+    <% end %>
+  </div>
+<% else %>
+  <h1>No Accounts Have Been Linked.</h1>
+  <% end %>
+
+
+  <form action="/user_accounts" method="post">
+    <% if @error %>
+    <div class="container red">
+      <%=@error%>
+    </div>
+    <% end %>
+    <div class="input-field">
+      <select class="" name="company_id">
+        <% @companies.each do |company| %>
+        <option value="<%=company.id%>.id"><%=company.name%></option>
+        <% end %>
+      </select>
+      <label for="method_name">Company Name</label>
+    </div>
+    <div class="input-field">
+      <input type="number" name="account_no" class="validate" required>
+      <label for="account_no">Enter Your Account No</label>
+    </div>
+    <button type="submit" class="btn" name="submit">Link Account</button>
   </form>
 </div>
