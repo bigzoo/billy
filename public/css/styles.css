@@ -73,3 +73,6 @@ main {
 .comp-name{
   font-family: 'Fredoka One', sans-serif;
 }
+.btn{
+  margin: 10px;
+}
