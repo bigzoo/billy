@@ -64,3 +64,12 @@ main {
 .accounts{
   height: auto;
 }
+.company_img{
+  height:200px;
+  margin-top: 30px;
+  width: 200px;
+  border-radius: 10%;
+}
+.comp-name{
+  font-family: 'Fredoka One', sans-serif;
+}
