@@ -38,3 +38,6 @@ main {
 .company_accounts{
   display: none;
 }
+#logins{
+	text-align: justify;
+}
