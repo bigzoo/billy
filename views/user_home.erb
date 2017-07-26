@@ -20,7 +20,15 @@
   </blockquote>
   <div class="collection">
     <% @user.payment_methods.each() do |method| %>
-    <a href="/user/payment_methods/<%=method.id%>" class="collection-item"><%= method.name.capitalize %></a>
+    <div class="collection-item">
+      <div>
+        <a href="/user/payment_methods/<%=method.id%>">
+          <%= method.name.capitalize %></a>
+        <a href="#!" class="secondary-content">
+          <i class="material-icons red-text">delete</i>
+        </a>
+      </div>
+    </div>
     <% end %>
   </div>
 <% else %>
@@ -61,6 +69,7 @@
   <div class="collection">
     <% @user.user_accounts.each() do |user_account| %>
     <a href="/user/accounts/<%=user_account.id%>" class="collection-item"><%= user_account.name%></a>
+    <a href="#!" class="secondary-content"><i class="material-icons red-text">delete</i></a>
     <% end %>
   </div>
 <% else %>
