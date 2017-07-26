@@ -1,0 +1,33 @@
+<div class="container">
+  <form action="/user_account" method="post">
+    <div class="input-field">
+      <input class="validate" type="number" name="national_id">
+      <label for="national_id">National ID:</label>
+    </div>
+    <div class="input-field">
+      <input class="validate" type="text" name="first_name" value="<%=@user.first_name%>">
+      <label for="first_name">First Name</label>
+    </div>
+    <div class="input-field">
+      <input class="validate" type="text" name="last_name" value="<%=@user.last_name%>">
+      <label for="last_name">Last Name</label>
+    </div>
+    <div class="input-field">
+      <input class="validate" type="email" name="email" value="<%=@user.email%>" disabled>
+      <label for="email">Email</label>
+    </div>
+    <div class="input-field">
+      <input class="validate" type="text" name="username" pattern="[a-zA-Z0-9]+">
+      <label for="username">Username(No Spaces)</label>
+    </div>
+    <div class="input-field">
+      <input class="validate" type="number" name="phone_no">
+      <label for="phone_no">Phone number:</label>
+    </div>
+    <div class="input-field">
+      <input class="validate" type="text" name="image">
+      <label for="image">Paste an Image link:</label>
+    </div>
+    <button type="submit" class="btn" name="button">Update<i class="material-icons right">send</i></button>
+  </form>
+</div>

@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Fredoka+One|PT+Sans|Raleway|Righteous');
+/*font-family: 'Raleway', sans-serif;
+font-family: 'PT Sans', sans-serif;
+font-family: 'Righteous', cursive;
+font-family: 'Fredoka One', cursive;*/
+
 .default_color{background-color:#2196F3 !important}.default_color_text{color:#2196F3 !important}.icon-block{padding:0
 15px}#intro,#work,#team{padding-top:4rem}#index-banner{min-height:632px;max-height:864px;position:relative;background-color:#2196F3}#nav_f{box-shadow:none !important;-webkit-box-shadow:none !important}.text_h{padding:15% 0;font-size:6.0em;font-weight:100;color:white}.brand-logo{position:absolute;color:#fff;display:inline-block;font-size:2.1rem;font-style:normal;font-weight:100;padding:0;letter-spacing:7px}.text_h2{font-weight:100;margin-bottom:4%;line-height:4.5rem}.span_h2{font-weight:300;color:#2196F3}.text_b{color:#2196F3}.in{font-weight:400 !important;font-style:normal !important}.promo
 i{color:#2196F3;font-size:7rem;display:block}.card-content
@@ -17,8 +23,18 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  font-family: 'Raleway', sans-serif;
+}
+
+.name{
+  font-family: 'Righteous', cursive;
+  font-weight: 500;
 }
 
 main {
   flex: 1 0 auto;
+}
+
+.company_accounts{
+  display: none;
 }

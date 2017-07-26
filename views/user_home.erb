@@ -1,26 +1,68 @@
+<img src="<%=@user.image%>">
+
+<% if !@user.national_id||!@user.image||!@user.phone_no||!@user.username %>
+<div class="red">
+  <div class="center nav-wrapper">
+    <a href="/user/profile" class="white-text">Please Click Here To Complete Registration</a>
+  </div>
+</div><% end %>
 <div class="container">
-<%if @user.payment_methods.any?%>
-<h1>Your payment methods</h1>
-<div class="collection">
-<% @user.payment_methods.each() do |method| %>
-  <a href="#!" class="collection-item"><%= method.name.capitalize %></a>
-  <% end %>
-</div>
+  <%if @user.payment_methods.any?%>
+  <h1>Your payment methods</h1>
+  <div class="collection">
+    <% @user.payment_methods.each() do |method| %>
+    <a href="#!" class="collection-item"><%= method.name.capitalize %></a>
+    <% end %>
+  </div>
 <% else %>
-<h1>No payment methods added.</h1>
-<% end %>
+  <h1>No payment methods added.</h1>
+  <% end %>
+
+  <h1>You can add payment methods to your account</h1>
+
+  <form action="/payment_methods" method="post">
+    <input type="hidden" id="user_id" name="user_id" value="<%=@user.id%>">
+    <label for="method_name">Payment Method Name</label>
+    <input placeholder="eg. Mpesa, Bank" type="text" name="method_name">
+    <label for="method_acc_no">Account No</label>
+    <input placeholder="eg phone no or bank acc no" type="text" name="method_acc_no">
+    <label for="method_provider">Payment Provider</label>
+    <input placeholder="Eg Safaricom, Equity Bank" type="text" name="method_provider">
+    <button type="submit" class="btn" name="submit">Add Payment Method</button>
+  </form>
+</div>
+
+<div class="container">
+  <%if @user.user_accounts.any?%>
+  <h1>Your Linked Accounts</h1>
+  <div class="collection">
+    <% @user.user_accounts.each() do |user_account| %>
+    <a href="#!" class="collection-item"><%= user_account.name%></a>
+    <% end %>
+  </div>
+<% else %>
+  <h1>No Accounts Have Been Linked.</h1>
+  <% end %>
 
 
-<h1>You can add payment methods to your account</h1>
-
-<form action="/payment_methods" method="post">
-  <input type="hidden" id="user_id" name="user_id" value="<%=@user.id%>">
-  <label for="method_name">Payment Method Name</label>
-  <input placeholder="eg. Mpesa, Bank" type="text" name="method_name">
-  <label for="method_acc_no">Account No</label>
-  <input placeholder="eg phone no or bank acc no" type="text" name="method_acc_no">
-  <label for="method_provider" >Payment Provider</label>
-  <input placeholder="Eg Safaricom, Equity Bank" type="text" name="method_provider">
-  <button type="submit" name="submit">Add Payment Method</button>
-</form>
+  <form action="/user_accounts" method="post">
+    <% if @error %>
+    <div class="container red">
+      <%=@error%>
+    </div>
+    <% end %>
+    <div class="input-field">
+      <select class="" name="company_id">
+        <% @companies.each do |company| %>
+        <option value="<%=company.id%>.id"><%=company.name%></option>
+        <% end %>
+      </select>
+      <label for="method_name">Company Name</label>
+    </div>
+    <div class="input-field">
+      <input type="number" name="account_no" class="validate" required>
+      <label for="account_no">Enter Your Account No</label>
+    </div>
+    <button type="submit" class="btn" name="submit">Link Account</button>
+  </form>
 </div>
