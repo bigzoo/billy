@@ -169,6 +169,20 @@ get('/user/profile') do
   erb(:user_profile)
 end
 
+get('/user/accounts/:id')do
+  if session[:type]=='user'
+    @user = User.find(session[:id])
+    @user_account = UserAccount.find(params.fetch('id').to_i)
+    @company_account = @user_account.company_account
+    @payment_methods = @user.payment_methods
+    erb(:user_account_home)
+  elsif session[:type]=='company'
+    redirect('/company/home')
+  else
+    redirect('/user/login')
+  end
+end
+
 post('/user_accounts')do
   user = User.find(session[:id])
   account_no = params.fetch('account_no').to_i
