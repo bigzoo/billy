@@ -262,3 +262,17 @@ post('/payments') do
   company_account.update(balance: new_balance)
   redirect('/user/home')
 end
+
+patch('/company_account')do
+  company = Company.find(session[:id])
+  new_name = params.fetch('name')
+  if new_name==''
+    new_name=company.name
+  end
+  new_image = params.fetch('image')
+  if new_image==''
+    new_image=company.image
+  end
+  company.update(name:new_name,image:new_image)
+  redirect('/company/home')
+end
