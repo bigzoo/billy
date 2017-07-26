@@ -11,7 +11,7 @@
   <h1>Your payment methods</h1>
   <div class="collection">
     <% @user.payment_methods.each() do |method| %>
-    <a href="#!" class="collection-item"><%= method.name.capitalize %></a>
+    <a href="/user/payment_methods/<%=method.id%>" class="collection-item"><%= method.name.capitalize %></a>
     <% end %>
   </div>
 <% else %>
