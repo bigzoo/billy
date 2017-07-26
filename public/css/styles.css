@@ -38,6 +38,9 @@ main {
 .company_accounts{
   display: none;
 }
-#logins{
-	text-align: justify;
+
+
+img{
+  height: 200px;
+  width:  250px;
 }
