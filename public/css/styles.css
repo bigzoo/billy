@@ -39,7 +39,7 @@ main {
   display: none;
 }
 
-img{
+.profile-image{
   height: 200px;
   width:  250px;
 }
