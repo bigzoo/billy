@@ -84,9 +84,14 @@ end
 
 post('/user') do
   @user = User.find_by(email: params['email'], password: params['password'])
-  session[:id] = @user.id
-  session[:type] = 'user'
-  redirect('/user/home')
+  if @user
+    session[:id] = @user.id
+    session[:type] = 'user'
+    redirect('/user/home')
+  else
+    @error = "You Entered a Wrong email or password!"
+    erb(:user_login)
+  end
 end
 
 post('/user_account') do
@@ -109,9 +114,14 @@ end
 
 post('/company') do
   @company = Company.find_by(email: params['email'], password: params['password'])
-  session[:id] = @company.id
-  session[:type] = 'company'
-  redirect('/company/home')
+  if @company
+    session[:id] = @company.id
+    session[:type] = 'company'
+    redirect('/company/home')
+  else
+    @error='You Entered a Wrong username or password!'
+    erb(:company_login)
+  end
 end
 
 get '/logout' do
