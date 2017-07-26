@@ -10,18 +10,32 @@
 </div><% end %>
 <div class="container">
   <%if @user.payment_methods.any?%>
-  <h1>Your payment methods</h1>
+  <div class="collection with header">
+    <div class="collection-header center">
+      <h3>Your payment methods</h3>
+    </div>
+  </div>
+  <blockquote>
+    Click on a payment method to see all payments you have made using it.
+  </blockquote>
   <div class="collection">
     <% @user.payment_methods.each() do |method| %>
     <a href="/user/payment_methods/<%=method.id%>" class="collection-item"><%= method.name.capitalize %></a>
     <% end %>
   </div>
 <% else %>
-  <h1>No payment methods added.</h1>
+  <div class="collection with header">
+    <div class="collection-header center">
+      <h3>No Payment Methods Added</h3>
+    </div>
+  </div>
   <% end %>
 
-  <h1>You can add payment methods to your account</h1>
-
+  <div class="collection with header">
+    <div class="collection-header center">
+      <h3>Add a payment method</h3>
+    </div>
+  </div>
   <form action="/payment_methods" method="post">
     <input type="hidden" id="user_id" name="user_id" value="<%=@user.id%>">
     <label for="method_name">Payment Method Name</label>
@@ -36,7 +50,11 @@
 
 <div class="container">
   <%if @user.user_accounts.any?%>
-  <h1>Your Linked Accounts</h1>
+  <div class="collection with header">
+    <div class="collection-header center">
+      <h3>Your Linked Accounts</h3>
+    </div>
+  </div>
   <blockquote>
     Clink on an account to make a payment and view payment history.
   </blockquote>
@@ -48,7 +66,6 @@
 <% else %>
   <h1>No Accounts Have Been Linked.</h1>
   <% end %>
-
 
   <form action="/user_accounts" method="post">
     <% if @error %>
