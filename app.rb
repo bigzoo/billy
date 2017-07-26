@@ -260,7 +260,7 @@ post('/payments') do
   company_account = user_account.company_account
   new_balance = company_account.balance + amount
   company_account.update(balance: new_balance)
-  redirect('/user/home')
+  redirect('/user/accounts/'.concat(params.fetch('user_account')))
 end
 
 patch('/company_account')do
