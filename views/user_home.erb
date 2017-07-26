@@ -35,9 +35,12 @@
 <div class="container">
   <%if @user.user_accounts.any?%>
   <h1>Your Linked Accounts</h1>
+  <blockquote>
+    Clink on an account to make a payment and view payment history.
+  </blockquote>
   <div class="collection">
     <% @user.user_accounts.each() do |user_account| %>
-    <a href="#!" class="collection-item"><%= user_account.name%></a>
+    <a href="/user/accounts/<%=user_account.id%>" class="collection-item"><%= user_account.name%></a>
     <% end %>
   </div>
 <% else %>
