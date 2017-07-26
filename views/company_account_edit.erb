@@ -4,11 +4,11 @@
 <form action="/company_accounts/<%= @company_account.id()%>" method="post">
   <input type="hidden" name="_method" value="patch">
   <div class="input-field">
-    <input class="validate" type="number" value="<%= @company_account.user_national_id()%>" name="user_national_id" disabled>
+    <input class="validate" type="number" value="<%= @company_account.user_national_id()%>" name="user_national_id" readonly>
     <label for="user_national_id">User national ID:</label>
   </div>
   <div class="input-field">
-    <input class="validate" type="text" value="<%= @company_account.user_reg_name %>" disabled name="user_reg_name">
+    <input class="validate" type="text" value="<%= @company_account.user_reg_name %>" readonly name="user_reg_name">
     <label for="user_reg_name">User registration name:</label>
   </div>
   <div class="input-field">
