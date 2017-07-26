@@ -33,7 +33,7 @@
 
 <div class="container">
   <% if @company.company_accounts.any? %>
-  <p><span class="accounts_no" <%= @company.company_accounts.count %></span>
+  <p><span class="accounts_no"><%= @company.company_accounts.count %></span>
   currently registered users.</p>
 <ul class="center collection with-header">
   <li class="collection-header">
@@ -50,6 +50,9 @@
       Account No:<%= company_account.account_no %>
       Account Balance:
       <%= company_account.balance %>
+      <a href="/company_accounts/<%= company_account.id()%>/edit">
+        <button type="button" name="button">Update Details</button>
+      </a>
     </div>
   </li>
   <%end%>
