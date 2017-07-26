@@ -1,144 +1,194 @@
 <!--Hero-->
 <div class="section no-pad-bot" id="index-banner">
-    <div class="container">
-        <h1 class="text_h center header cd-headline letters type">
-            <span>Let billy pay </span> 
-            <span class="cd-words-wrapper waiting">
-                <b class="is-visible"> Kplc</b>
-                <b>Nairobi water</b>
-                <b>your Bills</b>
-            </span>
-        </h1>
-    </div>
+  <div class="container">
+    <h1 class="text_h center header cd-headline letters type">
+      <span>Let billy pay
+      </span>
+      <span class="cd-words-wrapper waiting">
+        <b class="is-visible">
+          Kplc</b>
+        <b>Nairobi water</b>
+        <b>your Bills</b>
+      </span>
+    </h1>
+  </div>
 </div>
-
-
-
-<h1>Welcome to Billy</h1>
+<div class="container center">
+  <% if session[:id] && session[:type] == 'user' %>
+  <a href="/user/profile">View Your Profile</a>
+  <% elsif session[:id] && session[:type] == 'company'  %>
+<a href="/company/profile">View Your Profile</a>
+    <% else %>
+      <h1>Welcome to Billy</h1>
   <h4>Please sign up or log in to your account</h4>
+  <a class='dropdown-button btn blue' href='#' data-activates='dropdown1'>Sign Up</a>
+  <a class='dropdown-button btn blue' href='#' data-activates='dropdown2'>Log in</a>
+  <% end %>
 
-  <a href="/user/signup">Sign up as a user</a>
-  <br>
-  <a href="/company/signup">Sign up as a company</a>
-  <br>
-  <a href="/user/login">Log In as a user</a>
-  <br>
-  <a href="/company/login">Log In as a company</a>
+  <br><br><br><br>
+</div>
+<ul id='dropdown1' class='dropdown-content'>
+  <li>
+    <a href="/user/signup" class="blue-text">User</a>
+  </li>
+  <li>
+    <a href="/company/signup" class="blue-text">Company</a>
+  </li>
+</ul>
 
+<ul id='dropdown2' class='dropdown-content'>
+  <li>
+    <a href="/user/login" class="blue-text">User</a>
+  </li>
+  <li>
+    <a href="/company/login" class="blue-text">Company</a>
+  </li>
+</ul>
+
+<!-- <a href="/user/signup">Sign up as a user</a>
+<br>
+<a href="/company/signup">Sign up as a company</a>
+<br>
+<a href="/user/login">Log In as a user</a>
+<br>
+<a href="/company/login">Log In as a company</a> -->
 <!--Parallax-->
 <div class="parallax-container">
-    <div class="parallax"><img src="images/billwatch.jpg"></div>
+  <div class="parallax"><img src="images/billwatch.jpg"></div>
 </div>
 
 <!--Team-->
 <div class="section scrollspy" id="team">
-    <div class="container">
-        <h2 class="header text_b"> Our Team </h2>
-        <div class="row">
-            <div class="col s12 m3">
-                <div class="card card-avatar">
-                    <div class="waves-effect waves-block waves-light">
-                        <img class="activator" src="images/najib.jpg">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Najib Osman <br/>
-                            <small><em><a class="red-text text-darken-1" href="#">Developer</a></em></small></span>
-                        <p>
-                            <a class="blue-text text-lighten-2" href="https://www.facebook.com/nerjeep">
-                                <i class="fa fa-facebook-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="https://twitter.com/@Naajib38Othmern">
-                                <i class="fa fa-twitter-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="https://plus.google.com/u/0/+JoashPereira">
-                                <i class="fa fa-google-plus-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="https://www.linkedin.com/in/abdulmajid-osman-69ab38117/">
-                                <i class="fa fa-linkedin-square"></i>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m3">
-                <div class="card card-avatar">
-                    <div class="waves-effect waves-block waves-light">
-                        <img class="activator" src="img/avatar2.png">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Chris Nyaga<br/>
-                            <small><em><a class="red-text text-darken-1" href="#">Developer</a></em></small>
-                        </span>
-                        <p>
-                            <a class="blue-text text-lighten-2" href="https://www.facebook.com/">
-                                <i class="fa fa-facebook-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="https://twitter.com/">
-                                <i class="fa fa-twitter-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="https://plus.google.com/">
-                                <i class="fa fa-google-plus-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="https://www.linkedin.com/in/">
-                                <i class="fa fa-linkedin-square"></i>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m3">
-                <div class="card card-avatar">
-                    <div class="waves-effect waves-block waves-light">
 
-                        <img class="activator" src="images/iyke.jpg">
-
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">
-                            Isaac Onyango <br/>
-                            <small><em><a class="red-text text-darken-1" href="#">Developer</a></em></small></span>
-                        <p>
-                            <a class="blue-text text-lighten-2" href="https://www.facebook.com/">
-                                <i class="fa fa-facebook-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="https://twitter.com/">
-                                <i class="fa fa-twitter-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="https://plus.google.com/">
-                                <i class="fa fa-google-plus-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="https://www.linkedin.com/in/">
-                                <i class="fa fa-linkedin-square"></i>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m3">
-                <div class="card card-avatar">
-                    <div class="waves-effect waves-block waves-light">
-                        <img class="activator" src="img/avatar4.png">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Samwel Kinuthia<br/>
-                            <small><em><a class="red-text text-darken-1" href="#">Developer</a></em></small></span>
-                        <p>
-                            <a class="blue-text text-lighten-2" href="https://www.facebook.com/">
-                                <i class="fa fa-facebook-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="https://twitter.com/">
-                                <i class="fa fa-twitter-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="https://plus.google.com/">
-                                <i class="fa fa-google-plus-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="https://www.linkedin.com/in/">
-                                <i class="fa fa-linkedin-square"></i>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
+  <div class="container">
+    <h2 class="header text_b">
+      Our Team
+    </h2>
+    <div class="row">
+      <div class="col s12 m3">
+        <div class="card card-avatar">
+          <div class="waves-effect waves-block waves-light">
+            <img class="activator" src="images/najib.jpg">
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">Najib Osman
+              <br/>
+              <small>
+                <em>
+                  <a class="red-text text-darken-1" href="#">Developer</a>
+                </em>
+              </small>
+            </span>
+            <p>
+              <a class="blue-text text-lighten-2" href="https://www.facebook.com/nerjeep">
+                <i class="fa fa-facebook-square"></i>
+              </a>
+              <a class="blue-text text-lighten-2" href="https://twitter.com/@Naajib38Othmern">
+                <i class="fa fa-twitter-square"></i>
+              </a>
+              <a class="blue-text text-lighten-2" href="https://plus.google.com/u/0/+JoashPereira">
+                <i class="fa fa-google-plus-square"></i>
+              </a>
+              <a class="blue-text text-lighten-2" href="https://www.linkedin.com/in/abdulmajid-osman-69ab38117/">
+                <i class="fa fa-linkedin-square"></i>
+              </a>
+            </p>
+          </div>
         </div>
+      </div>
+      <div class="col s12 m3">
+        <div class="card card-avatar">
+          <div class="waves-effect waves-block waves-light">
+            <img class="activator" src="/images/chris.jpg">
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">Chris Nyaga<br/>
+              <small>
+                <em>
+                  <a target="_blank" class="red-text text-darken-1" href="http://bigzoo.me">Lead Developer</a>
+                </em>
+              </small>
+            </span>
+            <p>
+              <a class="blue-text text-lighten-2" href="https://www.facebook.com/">
+                <i class="fa fa-facebook-square"></i>
+              </a>
+              <a class="blue-text text-lighten-2" href="https://twitter.com/">
+                <i class="fa fa-twitter-square"></i>
+              </a>
+              <a class="blue-text text-lighten-2" href="https://plus.google.com/">
+                <i class="fa fa-google-plus-square"></i>
+              </a>
+              <a class="blue-text text-lighten-2" href="https://www.linkedin.com/in/">
+                <i class="fa fa-linkedin-square"></i>
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m3">
+        <div class="card card-avatar">
+          <div class="waves-effect waves-block waves-light">
+            <img class="activator" src="images/iyke.jpg">
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">
+              Issac Onyango
+              <br/>
+              <small>
+                <em>
+                  <a class="red-text text-darken-1" href="#">Developer</a>
+                </em>
+              </small>
+            </span>
+            <p>
+              <a class="blue-text text-lighten-2" href="https://www.facebook.com/">
+                <i class="fa fa-facebook-square"></i>
+              </a>
+              <a class="blue-text text-lighten-2" href="https://twitter.com/">
+                <i class="fa fa-twitter-square"></i>
+              </a>
+              <a class="blue-text text-lighten-2" href="https://plus.google.com/">
+                <i class="fa fa-google-plus-square"></i>
+              </a>
+              <a class="blue-text text-lighten-2" href="https://www.linkedin.com/in/">
+                <i class="fa fa-linkedin-square"></i>
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m3">
+        <div class="card card-avatar">
+          <div class="waves-effect waves-block waves-light">
+            <img class="activator" src="images/sam.jpg">
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">Samwel K<br/>
+              <small>
+                <em>
+                  <a class="red-text text-darken-1" href="#">Developer</a>
+                </em>
+              </small>
+            </span>
+            <p>
+              <a class="blue-text text-lighten-2" href="https://www.facebook.com/">
+                <i class="fa fa-facebook-square"></i>
+              </a>
+              <a class="blue-text text-lighten-2" href="https://twitter.com/">
+                <i class="fa fa-twitter-square"></i>
+              </a>
+              <a class="blue-text text-lighten-2" href="https://plus.google.com/">
+                <i class="fa fa-google-plus-square"></i>
+              </a>
+              <a class="blue-text text-lighten-2" href="https://www.linkedin.com/in/">
+                <i class="fa fa-linkedin-square"></i>
+              </a>
+            </p>
+          </div>
+
+        </div>
+      </div>
     </div>
+  
 </div>

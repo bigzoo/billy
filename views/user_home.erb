@@ -1,4 +1,6 @@
-<img src="<%=@user.image%>">
+<div class="container">
+  <img src="<%=@user.image%>">
+</div>
 
 <% if !@user.national_id||!@user.image||!@user.phone_no||!@user.username %>
 <div class="red">
@@ -11,7 +13,7 @@
   <h1>Your payment methods</h1>
   <div class="collection">
     <% @user.payment_methods.each() do |method| %>
-    <a href="#!" class="collection-item"><%= method.name.capitalize %></a>
+    <a href="/user/payment_methods/<%=method.id%>" class="collection-item"><%= method.name.capitalize %></a>
     <% end %>
   </div>
 <% else %>
@@ -28,16 +30,19 @@
     <input placeholder="eg phone no or bank acc no" type="text" name="method_acc_no">
     <label for="method_provider">Payment Provider</label>
     <input placeholder="Eg Safaricom, Equity Bank" type="text" name="method_provider">
-    <button type="submit" class="btn" name="submit">Add Payment Method</button>
+    <button type="submit" class="btn blue" name="submit">Add Payment Method</button>
   </form>
 </div>
 
 <div class="container">
   <%if @user.user_accounts.any?%>
   <h1>Your Linked Accounts</h1>
+  <blockquote>
+    Clink on an account to make a payment and view payment history.
+  </blockquote>
   <div class="collection">
     <% @user.user_accounts.each() do |user_account| %>
-    <a href="#!" class="collection-item"><%= user_account.name%></a>
+    <a href="/user/accounts/<%=user_account.id%>" class="collection-item"><%= user_account.name%></a>
     <% end %>
   </div>
 <% else %>
@@ -63,6 +68,7 @@
       <input type="number" name="account_no" class="validate" required>
       <label for="account_no">Enter Your Account No</label>
     </div>
-    <button type="submit" class="btn" name="submit">Link Account</button>
+    <button type="submit" class="btn blue" name="submit">Link Account</button>
   </form>
+  <br><br><br>
 </div>
