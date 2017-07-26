@@ -200,6 +200,11 @@ get('/user/profile') do
   erb(:user_profile)
 end
 
+get('/company/profile') do
+  @company = Company.find(session[:id])
+  erb(:company_profile)
+end
+
 get('/user/accounts/:id') do
   if session[:type] == 'user'
     @user = User.find(session[:id])
