@@ -200,6 +200,11 @@ get('/user/profile') do
   erb(:user_profile)
 end
 
+get('/company/profile') do
+  @company = Company.find(session[:id])
+  erb(:company_profile)
+end
+
 get('/user/accounts/:id') do
   if session[:type] == 'user'
     @user = User.find(session[:id])
@@ -255,5 +260,19 @@ post('/payments') do
   company_account = user_account.company_account
   new_balance = company_account.balance + amount
   company_account.update(balance: new_balance)
-  redirect('/user/home')
+  redirect('/user/accounts/'.concat(params.fetch('user_account')))
+end
+
+patch('/company_account')do
+  company = Company.find(session[:id])
+  new_name = params.fetch('name')
+  if new_name==''
+    new_name=company.name
+  end
+  new_image = params.fetch('image')
+  if new_image==''
+    new_image=company.image
+  end
+  company.update(name:new_name,image:new_image)
+  redirect('/company/home')
 end

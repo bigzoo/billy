@@ -1,4 +1,9 @@
 <div class="container">
+  <div class="collection with-header">
+    <div class="collection-header center">
+      <h3> <%=@user.first_name%> <%=@user.last_name%>'s Profile</h3>
+    </div>
+  </div>
   <form action="/user_account" method="post">
     <div class="input-field">
       <input class="validate" type="number" name="national_id">
@@ -17,15 +22,15 @@
       <label for="email">Email</label>
     </div>
     <div class="input-field">
-      <input class="validate" type="text" name="username" pattern="[a-zA-Z0-9]+">
+      <input class="validate" type="text" name="username" pattern="[a-zA-Z0-9]+" value="<%=@user.username%>">
       <label for="username">Username(No Spaces)</label>
     </div>
     <div class="input-field">
-      <input class="validate" type="number" name="phone_no">
+      <input class="validate" type="number" name="phone_no" value="<%=@user.phone_no%>">
       <label for="phone_no">Phone number:</label>
     </div>
     <div class="input-field">
-      <input class="validate" type="text" name="image">
+      <input class="validate" type="text" name="image" value="<%=@user.image%>">
       <label for="image">Paste an Image link:</label>
     </div>
     <button type="submit" class="btn" name="button">Update<i class="material-icons right">send</i></button>
