@@ -160,11 +160,24 @@ get('/company_accounts/:id/edit')do
 end
 
 patch('/company_accounts/:id') do
+  company_account = CompanyAccount.find(params.fetch('id').to_i)
   national_id = params.fetch('user_national_id')
   name = params.fetch('user_reg_name')
+
   account_no = params.fetch('account_no')
+  if account_no==''
+    account_no=company_account.account_no
+  end
+
   balance = params.fetch('balance')
+  if balance==''
+    balance=company_account.balance
+  end
+
   due_date = params.fetch('due_date')
+  if due_date==''
+    due_date=company_account.due_date
+  end
   @company_account = CompanyAccount.find(params.fetch('id').to_i)
   @company_account.update(user_national_id: national_id, user_reg_name: name, account_no: account_no, balance: balance, due_date: due_date)
   @company_accounts = CompanyAccount.all
