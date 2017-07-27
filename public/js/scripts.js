@@ -39,9 +39,6 @@ $('.datepicker').pickadate({
         $(".company_accounts").slideDown();
       });
       $('.tooltipped').tooltip({delay: 50});
-      if (!$.browser.webkit) {
-              $('.wrapper').html('<p>Sorry! Non webkit users. :(</p>');
-          }
     });
 
     var preloader;
