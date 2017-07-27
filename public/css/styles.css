@@ -20,6 +20,7 @@ p{margin:15px
 i{font-size:1.5rem}.card-avatar .card-content .card-title{line-height:30px !important}.parallax-container{max-height:400px}footer.page-footer{margin-top:0px !important}
 body {
   overflow-x: hidden;
+  overflow-y: scroll;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -85,4 +86,28 @@ main {
 footer{
   margin-bottom: 0px;
   padding-bottom: 0px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: #2196F3;
+}
+.parallax-container{
+  background: linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('https://images.pexels.com/photos/50987/money-card-business-credit-card-50987.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb')no-repeat center center fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+padding:100px;
+color:white;
+font-size: 20px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background-color:#fff;
+}
+::-webkit-scrollbar-thumb:window-inactive {
 }
