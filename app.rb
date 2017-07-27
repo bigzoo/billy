@@ -195,6 +195,15 @@ post('/payment_methods') do
   redirect('/user/home')
 end
 
+#delete payment
+
+delete('/user_payment_methods/:id')do
+    @payment_method = PaymentMethod.find(params.fetch('id').to_i)
+    @payment_method.delete
+    @payment_methods = PaymentMethod.all
+    redirect('/user/home')
+end
+
 get('/user/profile') do
   @user = User.find(session[:id])
   erb(:user_profile)
