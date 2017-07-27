@@ -199,9 +199,20 @@ end
 
 delete('/user_payment_methods/:id')do
     @payment_method = PaymentMethod.find(params.fetch('id').to_i)
+    user = User.find(session[:id])
+    payments = user.payments
+    payments.where(payment_method:@payment_method.id).destroy_all
     @payment_method.delete
-    @payment_methods = PaymentMethod.all
     redirect('/user/home')
+end
+
+delete('/user/accounts/:id')do
+  user = User.find(session[:id])
+  user_account = UserAccount.find(params.fetch('id'))
+  payments = user.payments
+  payments.where(user_account:user_account.id).destroy_all
+  user_account.delete
+  redirect('/user/home')
 end
 
 get('/user/profile') do

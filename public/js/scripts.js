@@ -38,5 +38,6 @@ $('.datepicker').pickadate({
       $("#show_company_accounts").click(function(){
         $(".company_accounts").slideDown();
       });
+      $('.tooltipped').tooltip({delay: 50});
     });
   });
