@@ -44,8 +44,10 @@ $('.datepicker').pickadate({
         return $(this).val() == $("#method_acc_no").val();
     }).attr('selected', true);
     $("#payment_method").on("change", function() {
-        $("#method_acc_no").val($(this).find("option:selected").attr("placeholder"));
-        $("#method_acc_no").val($(this).find("option:selected").attr("value"));
+        $("#method_acc_no").attr('type',$(this).find("option:selected").attr("type"));
+        $("#method_name").val($(this).find("option:selected").attr("dataname"));
+        $("#method_provider").val($(this).find("option:selected").attr("dataprovider"));
+        $("#method_acc_no_lb").text($(this).find("option:selected").attr("data"));
     });
     });
 
