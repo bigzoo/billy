@@ -13,7 +13,9 @@
     </h1>
   </div>
 </div>
+
 <div id="landing" class="container center">
+
   <% if session[:id] && session[:type] == 'user' %>
   <a href="/user/profile">View Your Profile</a>
   <% elsif session[:id] && session[:type] == 'company'  %>
@@ -56,6 +58,7 @@
 
 <!--Team-->
 <div class="section scrollspy" id="team">
+
   <div class="container">
     <h2 class="header text_b center">
       Our Team
@@ -183,8 +186,9 @@
               </a>
             </p>
           </div>
+
         </div>
       </div>
     </div>
-  </div>
+  
 </div>
