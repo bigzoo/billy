@@ -84,46 +84,44 @@ end
 
 post('/user') do
   @user = User.find_by(email: params['email'], password: params['password'])
-  session[:id] = @user.id
-  session[:type] = 'user'
-  redirect('/user/home')
+  if @user
+    session[:id] = @user.id
+    session[:type] = 'user'
+    redirect('/user/home')
+  else
+    @error = "You Entered a Wrong email or password!"
+    erb(:user_login)
+  end
 end
 
-post('/user_account')do
+post('/user_account') do
   user = User.find(session[:id])
   national_id = params.fetch('national_id')
-  if national_id==''
-    national_id=user.national_id
-  end
+  national_id = user.national_id if national_id == ''
   first_name = params.fetch('first_name')
-  if first_name==''
-    first_name=user.first_name
-  end
+  first_name = user.first_name if first_name == ''
   last_name = params.fetch('last_name')
-  if last_name==''
-    last_name=user.last_name
-  end
+  last_name = user.last_name if last_name == ''
   username = params.fetch('username')
-  if username==''
-    username=user.username
-  end
+  username = user.username if username == ''
   phone_no = params.fetch('phone_no')
-  if phone_no==''
-    phone_no=user.phone_no
-  end
+  phone_no = user.phone_no if phone_no == ''
   image = params.fetch('image')
-  if image==''
-    image=user.image
-  end
-  user.update(national_id:national_id,first_name:first_name,last_name:last_name,username:username,phone_no:phone_no,image:image)
+  image = user.image if image == ''
+  user.update(national_id: national_id, first_name: first_name, last_name: last_name, username: username, phone_no: phone_no, image: image)
   redirect('/user/home')
 end
 
 post('/company') do
   @company = Company.find_by(email: params['email'], password: params['password'])
-  session[:id] = @company.id
-  session[:type] = 'company'
-  redirect('/company/home')
+  if @company
+    session[:id] = @company.id
+    session[:type] = 'company'
+    redirect('/company/home')
+  else
+    @error='You Entered a Wrong username or password!'
+    erb(:company_login)
+  end
 end
 
 get '/logout' do
@@ -140,7 +138,6 @@ get('/companies/:id') do
   erb(:company_home)
 end
 
-
 post('/company_accounts') do
   company_id = params.fetch('company_id').to_i
   national_id = params.fetch('user_national_id')
@@ -151,7 +148,41 @@ post('/company_accounts') do
   CompanyAccount.create(company_id: company_id, user_national_id: national_id, user_reg_name: name, account_no: account_no, balance: balance, due_date: due_date)
   redirect('/company/home')
 end
-# end of comopany home
+
+
+#update method
+get('/company_accounts/:id/edit')do
+  @company_account = CompanyAccount.find(params.fetch("id").to_i)
+  @company = Company.find(session[:id])
+  erb(:company_account_edit)
+end
+
+patch('/company_accounts/:id') do
+  company_account = CompanyAccount.find(params.fetch('id').to_i)
+  national_id = params.fetch('user_national_id')
+  name = params.fetch('user_reg_name')
+
+  account_no = params.fetch('account_no')
+  if account_no==''
+    account_no=company_account.account_no
+  end
+
+  balance = params.fetch('balance')
+  if balance==''
+    balance=company_account.balance
+  end
+
+  due_date = params.fetch('due_date')
+  if due_date==''
+    due_date=company_account.due_date
+  end
+  @company_account = CompanyAccount.find(params.fetch('id').to_i)
+  @company_account.update(user_national_id: national_id, user_reg_name: name, account_no: account_no, balance: balance, due_date: due_date)
+  @company_accounts = CompanyAccount.all
+  redirect '/company/home'
+end
+
+# end of company home
 
 # payment methods
 post('/payment_methods') do
@@ -164,24 +195,104 @@ post('/payment_methods') do
   redirect('/user/home')
 end
 
+#delete payment
+
+delete('/user_payment_methods/:id')do
+    @payment_method = PaymentMethod.find(params.fetch('id').to_i)
+    user = User.find(session[:id])
+    payments = user.payments
+    payments.where(payment_method:@payment_method.id).destroy_all
+    @payment_method.delete
+    redirect('/user/home')
+end
+
+delete('/user/accounts/:id')do
+  user = User.find(session[:id])
+  user_account = UserAccount.find(params.fetch('id'))
+  payments = user.payments
+  payments.where(user_account:user_account.id).destroy_all
+  user_account.delete
+  redirect('/user/home')
+end
+
 get('/user/profile') do
   @user = User.find(session[:id])
   erb(:user_profile)
 end
 
-post('/user_accounts')do
+get('/company/profile') do
+  @company = Company.find(session[:id])
+  erb(:company_profile)
+end
+
+get('/user/accounts/:id') do
+  if session[:type] == 'user'
+    @user = User.find(session[:id])
+    @user_account = UserAccount.find(params.fetch('id').to_i)
+    @company_account = @user_account.company_account
+    @payment_methods = @user.payment_methods
+    erb(:user_account_home)
+  elsif session[:type] == 'company'
+    redirect('/company/home')
+  else
+    redirect('/user/login')
+  end
+end
+
+get('/user/payment_methods/:id') do
+  if session[:type] == 'user'
+    @user = User.find(session[:id])
+    @payment_method = PaymentMethod.find(params.fetch('id').to_i)
+    @payments = Payment.where(user_id: @user.id, payment_method: @payment_method.id)
+    erb(:user_payment_method)
+  elsif session[:type] == 'company'
+    redirect('/company/home')
+  else
+    redirect('/user/login')
+  end
+end
+
+post('/user_accounts') do
   user = User.find(session[:id])
   account_no = params.fetch('account_no').to_i
   company = Company.find(params.fetch('company_id').to_i)
-  company_account = CompanyAccount.find_by(account_no:account_no, company_id: company.id)
+  company_account = CompanyAccount.find_by(account_no: account_no, company_id: company.id)
   if company_account
-    user_account = UserAccount.new(user_id:user.id,company_account_id:company_account.id,account_no:account_no,name:company_account.company.name.concat(' Account For '+ company_account.user_reg_name))
+    user_account = UserAccount.new(user_id: user.id, company_account_id: company_account.id, account_no: account_no, name: company_account.company.name.concat(' Account For ' + company_account.user_reg_name))
     user_account.save
     redirect('/user/home')
   else
-    @error = "No account with no "+account_no.to_s+" was found associated with the company you selected."
+    @error = 'No account with no ' + account_no.to_s + ' was found associated with the company you selected.'
     @user = User.find(session[:id])
     @companies = Company.all
     erb(:user_home)
   end
+end
+
+post('/payments') do
+  user = User.find(session[:id])
+  payment_method = PaymentMethod.find(params.fetch('payment_method').to_i)
+  user_account = UserAccount.find(params.fetch('user_account').to_i)
+  amount = params.fetch('amount').to_i
+  company = Company.find(params.fetch('company').to_i)
+  new_payment = Payment.new(user_id: user.id, payment_method_id: payment_method.id, user_account_id: user_account.id, amount: amount, company_id: company.id)
+  new_payment.save
+  company_account = user_account.company_account
+  new_balance = company_account.balance + amount
+  company_account.update(balance: new_balance)
+  redirect('/user/accounts/'.concat(params.fetch('user_account')))
+end
+
+patch('/company_account')do
+  company = Company.find(session[:id])
+  new_name = params.fetch('name')
+  if new_name==''
+    new_name=company.name
+  end
+  new_image = params.fetch('image')
+  if new_image==''
+    new_image=company.image
+  end
+  company.update(name:new_name,image:new_image)
+  redirect('/company/home')
 end

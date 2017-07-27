@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="collection with-header">
+    <div class="collection-header">
+      <h4>You Are Viewing the <%= @payment_method.name %> payment method.</h4>
+    </div>
+    <% if @payments.any? %>
+    <%@payments.each do |payment|%>
+    <div class="collection-item">
+      <%=payment.amount%> paid to <%=Company.find(payment.company_id).name%> for <%=payment.user_account.name%>
+    </div>
+    <% end %>
+      <% else %>
+        <div class="collection-item">
+          You have not made any payments with <%=@payment_method.name%> yet
+        </div>
+    <% end %>
+  </div>
+</div>

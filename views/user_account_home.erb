@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="collection">
+    <div class="collection-item center">
+      <%=@user_account.name%>
+    </div>
+    <div class="collection-item center">
+      You have a balance of: <%=@company_account.balance%>
+    </div>
+  </div>
+  <% if @user_account.payments.any? %>
+    <% @user_account.payments.each do |payment| %>
+    <div class="collection">
+      <div class="collection-item">
+        <%= payment.amount %> paid to <%= Company.find(payment.company_id).name%> using <%= payment.payment_method.name%>
+      </div>
+    </div>
+    <% end %>
+    <% else %>
+    <div class="collection">
+      <div class="collection-item">
+        You Havent Made Any Payments To This Account Yet
+      </div>
+    </div>
+  <% end %>
+
+  <!-- New Payment Form -->
+  <form  action="/payments" method="post">
+    <h2>New Payment</h2>
+    <div class="input-field">
+      <select name="payment_method" required>
+        <% @payment_methods.each do |payment_method| %>
+        <option value="<%=payment_method.id%>"><%= payment_method.name %></option>
+        <% end %>
+      </select>
+      <label for="payment_method">Choose a Payment Method</label>
+    </div>
+    <div class="input-field">
+      <input type="text" name="user_account_name" value="<%= @user_account.name %>" disabled>
+      <input type="hidden" name="user_account" value="<%= @user_account.id %>">
+      <label for="user_account">User Account Name</label>
+    </div>
+    <div class="input-field">
+      <input type="text" name="user_account_number" value="<%= @user_account.account_no %>" disabled>
+      <label for="user_account_number">User Account Number</label>
+    </div>
+    <div class="input-field">
+      <input type="text" name="company_name" value="<%= @company_account.company.name %>" disabled>
+      <input type="hidden" name="company" value="<%=@company_account.company.id%>">
+      <label for="company">Company Name</label>
+    </div>
+    <div class="input-field">
+      <input type="number" name="amount" min=0 oninput="validity.valid||(value='');" required>
+      <label for="amount">Enter Amount To Pay</label>
+    </div>
+    <button class="btn blue" type="submit">Submit Payment</button>
+  </form>
+  <br><br><br>
+</div>

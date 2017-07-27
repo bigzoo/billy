@@ -1,9 +1,24 @@
-<form class="" action="/company" method="post">
-
-<label for="email">Email</label>
-<input type="text" name="email" id="email">
-<label for="password">Password</label>
-<input type="text" name="password" id="password">
-
-<button type="submit" name="button">Submit</button>
-</form>
+<div class="container">
+  <div class="collection">
+    <div class="collection-header center">
+      <h4>Login As a Company</h4>
+    </div>
+    <% if @error %>
+      <div class="collection-item red">
+        <%=@error%>
+      </div>
+    <% end %>
+  </div>
+  <form class="" action="/company" method="post">
+    <div class="input-field">
+      <label for="email">Email</label>
+      <input type="text" name="email" id="email">
+    </div>
+    <div class="input-field">
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password">
+    </div>
+    <button class="btn blue" type="submit" name="button">Submit</button>
+  </form>
+  <br><br><br><br>
+</div>

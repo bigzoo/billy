@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Fredoka+One|PT+Sans|Raleway|Righteous');
+@import url('https://fonts.googleapis.com/css?family=Fredoka+One|Passion+One|PT+Sans|Raleway|Righteous');
 /*font-family: 'Raleway', sans-serif;
 font-family: 'PT Sans', sans-serif;
 font-family: 'Righteous', cursive;
@@ -20,6 +20,7 @@ p{margin:15px
 i{font-size:1.5rem}.card-avatar .card-content .card-title{line-height:30px !important}.parallax-container{max-height:400px}footer.page-footer{margin-top:0px !important}
 body {
   overflow-x: hidden;
+  overflow-y: scroll;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -27,7 +28,7 @@ body {
 }
 
 .name{
-  font-family: 'Righteous', cursive;
+  font-family: 'Passion One', cursive;
   font-weight: 500;
 }
 
@@ -37,4 +38,90 @@ main {
 
 .company_accounts{
   display: none;
+}
+
+.profile-image{
+  height: 250px;
+  width:  300px;
+}
+
+.account_name{
+  color: #ff6600;
+  font-size: 20px;
+  font-weight: bold;
+}
+.account_number{
+  color: #2db300;
+  font-size: 20px;
+}
+.balance{
+  color: red;
+  font-size:  23px;
+}
+.accounts_no{
+  font-family: 'Righteous', cursive;
+  font-size:  16px;
+}
+.accounts{
+  height: auto;
+}
+.company_img{
+  height:200px;
+  margin-top: 30px;
+  width: 200px;
+  border-radius: 10%;
+}
+.comp-name{
+  font-family: 'Fredoka One', sans-serif;
+}
+.btn{
+  margin: 10px;
+}
+#contact{
+  text-align: center;
+  font-family: 'Fredoka One', cursive;
+  font-size:  18px;
+}
+
+footer{
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: #2196F3;
+}
+.parallax-container{
+  background:url('https://images.pexels.com/photos/50987/money-card-business-credit-card-50987.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb')no-repeat center center fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+padding:100px;
+color:white;
+font-size: 20px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background-color:#fff;
+}
+::-webkit-scrollbar-thumb:window-inactive {
+}
+
+#preloader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    overflow: visible;
+    background: url('https://image.ibb.co/iHgMPk/Double_Ring.gif') no-repeat center center;
+    background-color: #0b7dda;
+ }
+
+#content {
+    display: none;
 }
