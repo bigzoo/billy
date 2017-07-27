@@ -67,14 +67,23 @@
   </blockquote>
   <div class="collection">
     <% @user.user_accounts.each() do |user_account| %>
-    <a href="/user/accounts/<%=user_account.id%>" class="collection-item"><%= user_account.name%></a>
-    <a href="#!" class="secondary-content"><i class="material-icons red-text">delete</i></a>
+    <div class="collection-item">
+    <a href="/user/accounts/<%=user_account.id%>"><%= user_account.name%></a>
+    <form name = "myForm1" class="delete" style="display: none;"action="/user/accounts/<%=user_account.id() %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+    </form>
+    <a href="#" onclick="document.forms['myForm1'].submit(); return false;"  data-position="top" data-delay="50" data-tooltip="Deleting this account will delete all past payments made for it." class="secondary-content tooltipped"><i type="submit" class="material-icons red-text">delete</i></a>
+  </div>
     <% end %>
   </div>
 <% else %>
   <h1>No Accounts Have Been Linked.</h1>
   <% end %>
-
+  <div class="collection with header">
+    <div class="collection-header center">
+      <h3>Link A New Account</h3>
+    </div>
+  </div>
   <form action="/user_accounts" method="post">
     <% if @error %>
     <div class="container red">
