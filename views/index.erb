@@ -14,18 +14,19 @@
   </div>
 </div>
 
-<div id="landing"class="container center">
+<div id="landing" class="container center">
+
   <% if session[:id] && session[:type] == 'user' %>
   <a href="/user/profile">View Your Profile</a>
   <% elsif session[:id] && session[:type] == 'company'  %>
   <a href="/company/profile">View Your Profile</a>
 <% else %>
-<div class="section scrollspy" id="login">
+  <div class="section scrollspy" id="login">
     <h1>Welcome to Billy</h1>
-  <h4>Please sign up or log in to your account</h4>
-  <a class='dropdown-button btn blue' href='#' data-activates='dropdown1'>Sign Up</a>
-  <a class='dropdown-button btn blue' href='#' data-activates='dropdown2'>Log in</a>
-</div>
+    <h4>Please sign up or log in to your account</h4>
+    <a class='dropdown-button btn blue' href='#' data-activates='dropdown1'>Sign Up</a>
+    <a class='dropdown-button btn blue' href='#' data-activates='dropdown2'>Log in</a>
+  </div>
 
   <% end %>
 
@@ -51,7 +52,8 @@
 
 <!--Parallax-->
 <div class="parallax-container">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
   <div class="parallax"><img src="https://images.pexels.com/photos/50987/money-card-business-credit-card-50987.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"></div>
 </div>
 
@@ -166,7 +168,7 @@
             <span class="card-title activator grey-text text-darken-4">Samwel K<br/>
               <small>
                 <em>
-                  <a class="red-text text-darken-1" href="https://samwelkinuthia.github.io/portfolio-project/" target="_blank">Developer</a>
+                  <a class="red-text text-darken-1" href="https://samwelkinuthia.github.io/" target="_blank">Developer</a>
                 </em>
               </small>
             </span>
