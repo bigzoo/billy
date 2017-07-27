@@ -199,8 +199,10 @@ end
 
 delete('/user_payment_methods/:id')do
     @payment_method = PaymentMethod.find(params.fetch('id').to_i)
+    user = User.find(session[:id])
+    payments = user.payments
+    payments.where(payment_method:@payment_method.id).destroy_all
     @payment_method.delete
-    @payment_methods = PaymentMethod.all
     redirect('/user/home')
 end
 
