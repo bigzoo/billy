@@ -206,6 +206,15 @@ delete('/user_payment_methods/:id')do
     redirect('/user/home')
 end
 
+delete('/user/accounts/:id')do
+  user = User.find(session[:id])
+  user_account = UserAccount.find(params.fetch('id'))
+  payments = user.payments
+  payments.where(user_account:user_account.id).destroy_all
+  user_account.delete
+  redirect('/user/home')
+end
+
 get('/user/profile') do
   @user = User.find(session[:id])
   erb(:user_profile)
