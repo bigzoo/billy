@@ -52,18 +52,19 @@ $('.datepicker').pickadate({
     var preloader;
 
     function preload(opacity) {
-        if(opacity <= 0.8) {
+        if(opacity <= 0.9) {
             showContent();
         }
         else {
             preloader.style.opacity = opacity;
-            window.setTimeout(function() { preload(opacity - 0.05) }, 100);
+            window.setTimeout(function() { preload(opacity - 0.007) }, 100);
         }
     }
 
     function showContent() {
         preloader.style.display = 'none';
-        document.getElementById('content').style.display = 'block';
+        $('#content').fadeIn()
+        // document.getElementById('content').style.display = 'block'
     }
 
     document.addEventListener("DOMContentLoaded", function () {
