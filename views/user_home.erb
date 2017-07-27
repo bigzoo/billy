@@ -48,11 +48,11 @@
   <form action="/payment_methods" method="post">
     <input type="hidden" id="user_id" name="user_id" value="<%=@user.id%>">
     <label for="method_name">Payment Method Name</label>
-    <input placeholder="eg. Mpesa, Bank" type="text" name="method_name">
+    <input placeholder="eg. Mpesa, Bank" type="text" name="method_name" required>
     <label for="method_acc_no">Account No</label>
-    <input placeholder="eg phone no or bank acc no" type="text" name="method_acc_no">
+    <input placeholder="eg phone no or bank acc no" type="text" name="method_acc_no" required>
     <label for="method_provider">Payment Provider</label>
-    <input placeholder="Eg Safaricom, Equity Bank" type="text" name="method_provider">
+    <input placeholder="Eg Safaricom, Equity Bank" type="text" name="method_provider" required>
     <button type="submit" class="btn blue" name="submit">Add Payment Method</button>
   </form>
 </div>
@@ -84,7 +84,7 @@
     </div>
     <% end %>
     <div class="input-field">
-      <select class="" name="company_id">
+      <select class="" name="company_id" required>
         <% @companies.each do |company| %>
         <option value="<%=company.id%>.id"><%=company.name%></option>
         <% end %>
