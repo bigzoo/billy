@@ -21,14 +21,12 @@
   <div class="collection">
     <% @user.payment_methods.each() do |method| %>
     <div class="collection-item">
-      <div>
         <a href="/user/payment_methods/<%=method.id%>">
           <%= method.name.capitalize %></a>
-          <form name = "myForm"class="delete" style="display: none;"action="/user_payment_methods/<%=method.id() %>" method="post">
+          <form name = "myForm" class="delete" style="display: none;"action="/user_payment_methods/<%=method.id() %>" method="post">
             <input type="hidden" name="_method" value="delete">
           </form>
-          <a href="#" onclick="document.forms['myForm'].submit(); return false;"  class="secondary-content"><i type="submit" class="material-icons red-text">delete</i></a>
-      </div>
+          <a href="#" onclick="document.forms['myForm'].submit(); return false;"  data-position="top" data-delay="50" data-tooltip="Deleting this method will delete all past payments made with it." class="secondary-content tooltipped"><i type="submit" class="material-icons red-text">delete</i></a>
     </div>
     <% end %>
   </div>
