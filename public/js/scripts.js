@@ -39,3 +39,4 @@ $('.datepicker').pickadate({
         $(".company_accounts").slideDown();
       });
     });
+  });
