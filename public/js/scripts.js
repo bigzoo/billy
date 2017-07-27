@@ -40,4 +40,3 @@ $('.datepicker').pickadate({
       });
       $('.tooltipped').tooltip({delay: 50});
     });
-  });
