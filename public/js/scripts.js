@@ -34,11 +34,8 @@ $('.datepicker').pickadate({
 
   $(document).ready(function() {
       $('select').material_select();
+      $('.scrollspy').scrollSpy();
+      $("#show_company_accounts").click(function(){
+        $(".company_accounts").slideDown();
+      });
     });
-
-
-$(document).ready(function(){
-  $("#show_company_accounts").click(function(){
-    $(".company_accounts").slideDown();
-  });
-});
