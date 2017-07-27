@@ -2,7 +2,12 @@
   <img class="company_img" src="<%= @company.image %>"><br>
   <h5 class="comp-name"><%=@company.name.capitalize%></h5>
 </div>
-
+<% if !@company.image %>
+<div class="red">
+  <div class="center nav-wrapper">
+    <a href="/company/profile" class="white-text">Please Click Here To Complete Registration</a>
+  </div>
+</div><% end %>
 <div class="container accounts">
   <button id="show_company_accounts" class="btn blue" name="button">Add User</button>
   <form class="company_accounts" action="/company_accounts" method="post">
@@ -57,8 +62,10 @@
     <%end%>
   </ul>
   <%else%>
-  <h1>No users registered to
-    <%= @company.name%>
-    yet.</h1>
+  <div class="collection with-header">
+    <div class="collection-header center">
+      <h4>No users registered to <%= @company.name%> yet.</h4>
+    </div>
+  </div>
   <%end%>
 </div>
