@@ -39,6 +39,7 @@ main {
   display: none;
 }
 
+img{
 .profile-image{
   height: 200px;
   width:  250px;
@@ -75,4 +76,14 @@ main {
 }
 .btn{
   margin: 10px;
+}
+#contact{
+  text-align: center;
+  font-family: 'Fredoka One', cursive;
+  font-size:  18px;
+}
+
+footer{
+  margin-bottom: 0px;
+  padding-bottom: 0px;
 }
