@@ -39,4 +39,12 @@ $('.datepicker').pickadate({
         $(".company_accounts").slideDown();
       });
       $('.tooltipped').tooltip({delay: 50});
+
+      $("#payment_method option").filter(function() {
+        return $(this).val() == $("#method_acc_no").val();
+    }).attr('selected', true);
+    $("#payment_method").on("change", function() {
+        $("#method_acc_no").val($(this).find("option:selected").attr("placeholder"));
+        $("#method_acc_no").val($(this).find("option:selected").attr("value"));
+    });
     });
