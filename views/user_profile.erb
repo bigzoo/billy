@@ -6,33 +6,33 @@
   </div>
   <form action="/user_account" method="post">
     <div class="input-field">
-      <input class="validate" type="number" name="national_id">
+      <input class="validate" type="number" name="national_id" value="<%=@user.national_id%>" required>
       <label for="national_id">National ID:</label>
     </div>
     <div class="input-field">
-      <input class="validate" type="text" name="first_name" value="<%=@user.first_name%>">
+      <input class="validate" type="text" name="first_name" value="<%=@user.first_name%>" required>
       <label for="first_name">First Name</label>
     </div>
     <div class="input-field">
-      <input class="validate" type="text" name="last_name" value="<%=@user.last_name%>">
+      <input class="validate" type="text" name="last_name" value="<%=@user.last_name%>" required>
       <label for="last_name">Last Name</label>
     </div>
     <div class="input-field">
-      <input class="validate" type="email" name="email" value="<%=@user.email%>" disabled>
+      <input class="validate" type="email" name="email" value="<%=@user.email%>" disabled required>
       <label for="email">Email</label>
     </div>
     <div class="input-field">
-      <input class="validate" type="text" name="username" pattern="[a-zA-Z0-9]+" value="<%=@user.username%>">
+      <input class="validate" type="text" name="username" pattern="[a-zA-Z0-9]+" value="<%=@user.username%>" required>
       <label for="username">Username(No Spaces)</label>
     </div>
     <div class="input-field">
-      <input class="validate" type="number" name="phone_no" value="<%=@user.phone_no%>">
+      <input class="validate" type="number" name="phone_no" value="<%=@user.phone_no%>" required>
       <label for="phone_no">Phone number:</label>
     </div>
     <div class="input-field">
-      <input class="validate" type="text" name="image" value="<%=@user.image%>">
+      <input class="validate" type="text" name="image" value="<%=@user.image%>" required>
       <label for="image">Paste an Image link:</label>
     </div>
-    <button type="submit" class="btn" name="button">Update<i class="material-icons right">send</i></button>
+    <button type="submit" class="btn blue" name="button">Update<i class="material-icons right">send</i></button>
   </form>
 </div>

@@ -1,5 +1,8 @@
+<br>
 <div class="container">
-  <img class="profile-image" src="<%=@user.image%>">
+  <img class="profile-image" src="<%=@user.image%>"><br>
+  <h5><%=@user.first_name%></h5>
+  <h6><%=@user.email%></h6>
 </div>
 
 <% if !@user.national_id||!@user.image||!@user.phone_no||!@user.username %>
@@ -21,13 +24,12 @@
   <div class="collection">
     <% @user.payment_methods.each() do |method| %>
     <div class="collection-item">
-      <div>
         <a href="/user/payment_methods/<%=method.id%>">
           <%= method.name.capitalize %></a>
-        <a href="#!" class="secondary-content">
-          <i class="material-icons red-text">delete</i>
-        </a>
-      </div>
+          <form name = "myForm" class="delete" style="display: none;"action="/user_payment_methods/<%=method.id() %>" method="post">
+            <input type="hidden" name="_method" value="delete">
+          </form>
+          <a href="#" onclick="document.forms['myForm'].submit(); return false;"  data-position="top" data-delay="50" data-tooltip="Deleting this method will delete all past payments made with it." class="secondary-content tooltipped"><i type="submit" class="material-icons red-text">delete</i></a>
     </div>
     <% end %>
   </div>
@@ -47,11 +49,11 @@
   <form action="/payment_methods" method="post">
     <input type="hidden" id="user_id" name="user_id" value="<%=@user.id%>">
     <label for="method_name">Payment Method Name</label>
-    <input placeholder="eg. Mpesa, Bank" type="text" name="method_name">
+    <input placeholder="eg. Mpesa, Bank" type="text" name="method_name" required>
     <label for="method_acc_no">Account No</label>
-    <input placeholder="eg phone no or bank acc no" type="text" name="method_acc_no">
+    <input placeholder="eg phone no or bank acc no" type="text" name="method_acc_no" required>
     <label for="method_provider">Payment Provider</label>
-    <input placeholder="Eg Safaricom, Equity Bank" type="text" name="method_provider">
+    <input placeholder="Eg Safaricom, Equity Bank" type="text" name="method_provider" required>
     <button type="submit" class="btn blue" name="submit">Add Payment Method</button>
   </form>
 </div>
@@ -68,14 +70,23 @@
   </blockquote>
   <div class="collection">
     <% @user.user_accounts.each() do |user_account| %>
-    <a href="/user/accounts/<%=user_account.id%>" class="collection-item"><%= user_account.name%></a>
-    <a href="#!" class="secondary-content"><i class="material-icons red-text">delete</i></a>
+    <div class="collection-item">
+    <a href="/user/accounts/<%=user_account.id%>"><%= user_account.name%></a>
+    <form name = "myForm1" class="delete" style="display: none;"action="/user/accounts/<%=user_account.id() %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+    </form>
+    <a href="#" onclick="document.forms['myForm1'].submit(); return false;"  data-position="top" data-delay="50" data-tooltip="Deleting this account will delete all past payments made for it." class="secondary-content tooltipped"><i type="submit" class="material-icons red-text">delete</i></a>
+  </div>
     <% end %>
   </div>
 <% else %>
   <h1>No Accounts Have Been Linked.</h1>
   <% end %>
-
+  <div class="collection with header">
+    <div class="collection-header center">
+      <h3>Link A New Account</h3>
+    </div>
+  </div>
   <form action="/user_accounts" method="post">
     <% if @error %>
     <div class="container red">
@@ -83,7 +94,7 @@
     </div>
     <% end %>
     <div class="input-field">
-      <select class="" name="company_id">
+      <select class="" name="company_id" required>
         <% @companies.each do |company| %>
         <option value="<%=company.id%>.id"><%=company.name%></option>
         <% end %>

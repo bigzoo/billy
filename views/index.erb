@@ -13,17 +13,24 @@
     </h1>
   </div>
 </div>
+<<<<<<< HEAD
 <
-<div class="container center">
+
+
+<div id="landing"class="container center">
+
   <% if session[:id] && session[:type] == 'user' %>
   <a href="/user/profile">View Your Profile</a>
   <% elsif session[:id] && session[:type] == 'company'  %>
   <a href="/company/profile">View Your Profile</a>
 <% else %>
-  <h1>Welcome to Billy</h1>
+<div class="section scrollspy" id="login">
+    <h1>Welcome to Billy</h1>
   <h4>Please sign up or log in to your account</h4>
   <a class='dropdown-button btn blue' href='#' data-activates='dropdown1'>Sign Up</a>
   <a class='dropdown-button btn blue' href='#' data-activates='dropdown2'>Log in</a>
+</div>
+
   <% end %>
 
   <br><br><br><br>
@@ -48,14 +55,15 @@
 
 <!--Parallax-->
 <div class="parallax-container">
-  <div class="parallax"><img src="images/billwatch.jpg"></div>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <!-- <div class="parallax"><img src="https://images.pexels.com/photos/50987/money-card-business-credit-card-50987.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"></div> -->
 </div>
 
 <!--Team-->
 <div class="section scrollspy" id="team">
 
   <div class="container">
-    <h2 class="header text_b">
+    <h2 class="header text_b center">
       Our Team
     </h2>
     <div class="row">
