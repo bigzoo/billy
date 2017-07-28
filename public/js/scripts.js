@@ -39,23 +39,34 @@ $('.datepicker').pickadate({
         $(".company_accounts").slideDown();
       });
       $('.tooltipped').tooltip({delay: 50});
+
+      $("#payment_method option").filter(function() {
+        return $(this).val() == $("#method_acc_no").val();
+    }).attr('selected', true);
+    $("#payment_method").on("change", function() {
+        $("#method_acc_no").attr('type',$(this).find("option:selected").attr("type"));
+        $("#method_name").val($(this).find("option:selected").attr("dataname"));
+        $("#method_provider").val($(this).find("option:selected").attr("dataprovider"));
+        $("#method_acc_no_lb").text($(this).find("option:selected").attr("data"));
+    });
     });
 
     var preloader;
 
     function preload(opacity) {
-        if(opacity <= 0.8) {
+        if(opacity <= 0.9) {
             showContent();
         }
         else {
             preloader.style.opacity = opacity;
-            window.setTimeout(function() { preload(opacity - 0.05) }, 100);
+            window.setTimeout(function() { preload(opacity - 0.007) }, 100);
         }
     }
 
     function showContent() {
         preloader.style.display = 'none';
-        document.getElementById('content').style.display = 'block';
+        $('#content').fadeIn()
+        // document.getElementById('content').style.display = 'block'
     }
 
     document.addEventListener("DOMContentLoaded", function () {

@@ -52,7 +52,11 @@
       <div class="">
         Name:<span class="account_name"><%= company_account.user_reg_name%></span>
         &nbsp; &nbsp; &nbsp; Account No:<span class="account_number"><%= company_account.account_no %></span>
-        &nbsp; &nbsp; &nbsp; Account Balance:<span class="balance"><%= company_account.balance %></span>
+        <% if company_account.balance> 0 %>
+        &nbsp; &nbsp; &nbsp; Account Balance:<span class="account_number"><%= company_account.balance %></span>
+          <% else %>
+          &nbsp; &nbsp; &nbsp; Account Balance:<span class="balance"><%= company_account.balance %></span>
+        <% end %>
         &nbsp; &nbsp; &nbsp;
         <a href="/company_accounts/<%= company_account.id()%>/edit">
           <button class="btn blue">Update Details</button>
