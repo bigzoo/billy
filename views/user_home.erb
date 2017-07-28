@@ -24,12 +24,14 @@
   <div class="collection">
     <% @user.payment_methods.each() do |method| %>
     <div class="collection-item">
-        <a href="/user/payment_methods/<%=method.id%>">
-          <%= method.name.capitalize %></a>
-          <form name = "myForm" class="delete" style="display: none;"action="/user_payment_methods/<%=method.id() %>" method="post">
-            <input type="hidden" name="_method" value="delete">
-          </form>
-          <a href="#" onclick="document.forms['myForm'].submit(); return false;"  data-position="top" data-delay="50" data-tooltip="Deleting this method will delete all past payments made with it." class="secondary-content tooltipped"><i type="submit" class="material-icons red-text">delete</i></a>
+      <a href="/user/payment_methods/<%=method.id%>">
+        <%= method.name.capitalize %></a>
+      <form name="myForm" class="delete" style="display: none;" action="/user_payment_methods/<%=method.id() %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+      </form>
+      <a href="#" onclick="document.forms['myForm'].submit(); return false;" data-position="top" data-delay="50" data-tooltip="Deleting this method will delete all past payments made with it." class="secondary-content tooltipped">
+        <i type="submit" class="material-icons red-text">delete</i>
+      </a>
     </div>
     <% end %>
   </div>
@@ -48,13 +50,21 @@
   </div>
   <form action="/payment_methods" method="post">
     <input type="hidden" id="user_id" name="user_id" value="<%=@user.id%>">
-    <label for="method_name">Payment Method Name</label>
-    <input placeholder="eg. Mpesa, Bank" type="text" name="method_name" required>
-    <label for="method_acc_no">Account No</label>
-    <input placeholder="eg phone no or bank acc no" type="text" name="method_acc_no" required>
-    <label for="method_provider">Payment Provider</label>
-    <input placeholder="Eg Safaricom, Equity Bank" type="text" name="method_provider" required>
-    <button type="submit" class="btn blue" name="submit">Add Payment Method</button>
+    <select id="payment_method" name="payment_method">
+      <option value="">Select a payment method</option>
+      <option value="equity" dataprovider="Equity" dataname="Equity Bank" type="number" data="Enter your Equity Account No" data-icon="http://ke.equitybankgroup.com/images/equity_bank%20_logo.jpg" class="left">Equity</option>
+      <option value="safaricom" dataprovider="Safaricom" dataname="Mpesa" type="number" data="Enter Your Safaricom phone No" data-icon="https://www.safaricom.co.ke/phantom6s/images/safaricom-shop.png" class="left">Safaricom</option>
+      <option value="airtel" dataprovider="Airtel" dataname="Airtel Money" type="number" data="Enter Your Airtel phone No" data-icon="http://www.airtel.in/si/images/logo-airtel.png" class="left">Airtel</option>
+      <option value="paypal" dataprovider="Paypal" dataname="Paypal Account" type="email" data="Enter your Paypal email" data-icon="https://www.invoiceninja.com/wp-content/uploads/2015/12/PayPal.png" class="left">Paypal</option>
+      <option value="mastercard" dataprovider="Mastercard" dataname="Mastercard Account" type="number" data="Enter you Mastercard Account No" data-icon="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/MasterCard_early_1990s_logo.svg/200px-MasterCard_early_1990s_logo.svg.png" class="left">MasterCard</option>
+    </select>
+    <input type="hidden" name="method_name" id="method_name" required>
+    <input type="hidden" name="method_provider" id="method_provider" required>
+    <div class="input-field">
+      <input type="text" id="method_acc_no" name="method_acc_no" required>
+      <label for="method_acc_no" id="method_acc_no_lb"></label>
+    </div>
+    <button type="submit" class="btn blue" name="submit">Save Payment Method</button>
   </form>
 </div>
 
@@ -71,12 +81,14 @@
   <div class="collection">
     <% @user.user_accounts.each() do |user_account| %>
     <div class="collection-item">
-    <a href="/user/accounts/<%=user_account.id%>"><%= user_account.name%></a>
-    <form name = "myForm1" class="delete" style="display: none;"action="/user/accounts/<%=user_account.id() %>" method="post">
-      <input type="hidden" name="_method" value="delete">
-    </form>
-    <a href="#" onclick="document.forms['myForm1'].submit(); return false;"  data-position="top" data-delay="50" data-tooltip="Deleting this account will delete all past payments made for it." class="secondary-content tooltipped"><i type="submit" class="material-icons red-text">delete</i></a>
-  </div>
+      <a href="/user/accounts/<%=user_account.id%>"><%= user_account.name%></a>
+      <form name="myForm1" class="delete" style="display: none;" action="/user/accounts/<%=user_account.id() %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+      </form>
+      <a href="#" onclick="document.forms['myForm1'].submit(); return false;" data-position="top" data-delay="50" data-tooltip="Deleting this account will delete all past payments made for it." class="secondary-content tooltipped">
+        <i type="submit" class="material-icons red-text">delete</i>
+      </a>
+    </div>
     <% end %>
   </div>
 <% else %>

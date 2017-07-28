@@ -17,52 +17,56 @@
     <link rel="shortcut icon" href="https://cdn.travis-ci.org/images/favicon-076a22660830dc325cc8ed70e7146a59.png">
   </head>
   <body>
-    <!--Navigation-->
-    <div class="navbar-fixed">
-      <nav id="nav_f" class="default_color" role="navigation">
-        <div class="container">
-          <div class="nav-wrapper">
-            <a href="/" id="logo-container" class="brand-logo">
-              <span class="name">BILLy!</span>
-            </a>
-            <ul class="right hide-on-med-and-down">
-              <% if session[:id] %>
-              <% if session[:type]=='user'%>
-              <li>
-                Welcome
-                <%=@user.first_name%></li>
-              <li>
-                <a href="/user/home">Home</a>
-              </li>
-              <li>
-                <a href="/user/profile">Profile</a>
-              </li>
-              <%elsif session[:type]=='company'%>
-              <li>Welcome
-                <%=@company.name%></li>
-              <li>
-                <a href="/company/home">Home</a>
-              </li>
-              <li>
-                <a href="/company/profile">Profile</a>
-              </li>
-              <% end %>
-              <li>
-                <a href="/logout">Logout</a>
-              </li>
-            <% else %>
-            <a href="#login">Log In</a>
-              <% end %>
-            </ul>
-            <a href="#" data-activates="nav-mobile" class="button-collapse">
-              <i class="mdi-navigation-menu"></i>
-            </a>
-          </div>
-        </div>
-      </nav>
+    <div id="preloader">
     </div>
+    <div id="content">
 
-    <%= yield %>
+      <!--Navigation-->
+      <div class="navbar-fixed">
+        <nav id="nav_f" class="default_color" role="navigation">
+          <div class="container">
+            <div class="nav-wrapper">
+              <a href="/" id="logo-container" class="brand-logo">
+                <span class="name">BILLy!</span>
+              </a>
+              <ul class="right hide-on-med-and-down">
+                <% if session[:id] %>
+                <% if session[:type]=='user'%>
+                <li>
+                  Welcome
+                  <%=@user.first_name%></li>
+                <li>
+                  <a href="/user/home">Home</a>
+                </li>
+                <li>
+                  <a href="/user/profile">Profile</a>
+                </li>
+                <%elsif session[:type]=='company'%>
+                <li>Welcome
+                  <%=@company.name%></li>
+                <li>
+                  <a href="/company/home">Home</a>
+                </li>
+                <li>
+                  <a href="/company/profile">Profile</a>
+                </li>
+                <% end %>
+                <li>
+                  <a href="/logout">Logout</a>
+                </li>
+              <% else %>
+                <a href="#login">Log In</a>
+                <% end %>
+              </ul>
+              <a href="#" data-activates="nav-mobile" class="button-collapse">
+                <i class="mdi-navigation-menu"></i>
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <%= yield %>
 
     <!--Footer-->
     <footer id="contact" class="page-footer default_color scrollspy">
@@ -132,18 +136,20 @@
         </div>
         <div class="footer-copyright default_color">
         <div class="container">
-          Created by
+          <p>Created by
           <a class="white-text" href="https://github.com/bigzoo/billy/graphs/contributors">Billy Team</a>.
+           &copy; Copyright 2017.</p>
           
         </div>
     </div>
   </footer>
 
-  <!--Import jQuery before materialize.js-->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <!-- Compiled and minified JavaScript -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
-  <script src="/js/scripts.js"></script>
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+    <script src="/js/scripts.js"></script>
+  </div>
 </body>
 </html>
