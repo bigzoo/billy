@@ -13,6 +13,16 @@ get('/') do
   erb(:index)
 end
 
+post('/') do
+  if session[:id] && session[:type] == 'user'
+    @user = User.find(session[:id])
+  elsif session[:id] && session[:type] == 'company'
+    @company = Company.find(session[:id])
+  end
+  @thanks = "Thanks For Chatting!."
+  erb(:index)
+end
+
 # start of sign up and login methods
 
 get '/user/signup' do
