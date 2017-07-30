@@ -1,11 +1,11 @@
 # _Billy_
 [![Build Status](https://travis-ci.org/bigzoo/billy.svg?branch=master)](https://travis-ci.org/bigzoo/billy)
 
-##### This application  that  pays your bills on behalf.All you need to do is to top-up.
+##### Billy pays your bills. Give it a try today.
 
 ## Technologies Used
 
-Application: Ruby, Sinatra, Active Record<br>
+Application: Ruby, Sinatra,
 Testing: Rspec, Capybara<br>
 Database: Postgres
 
@@ -24,7 +24,7 @@ $ bundle install
 Create databases:
 ```
 rake db:create
-rake db:schema:load
+rake db:migrate
 ```
 
 Start the webserver:
@@ -36,10 +36,14 @@ Navigate to `localhost:4567` in browser.
 
 ## Versioning
 
-I use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/bigzoo/billy). 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/bigzoo/billy). 
 
 
 License
 -------
 
-This project is licensed under the MIT License 
+/* Copyright (C) Billy Systems, Inc - All Rights Reserved
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ * Written by Chris Nyaga <me@bigzoo.me>, July 2017
+ */
